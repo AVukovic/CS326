@@ -14,8 +14,84 @@ var state = [];
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
-var MyComponent = function (_React$Component) {
-  _inherits(MyComponent, _React$Component);
+var Title = function (_React$Component) {
+  _inherits(Title, _React$Component);
+
+  function Title() {
+    _classCallCheck(this, Title);
+
+    return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).call(this));
+  }
+
+  _createClass(Title, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        { align: "center" },
+        React.createElement(
+          "h1",
+          null,
+          "Euler on Canvas"
+        )
+      );
+    }
+  }]);
+
+  return Title;
+}(React.Component);
+
+var NavBar = function (_React$Component2) {
+  _inherits(NavBar, _React$Component2);
+
+  function NavBar() {
+    _classCallCheck(this, NavBar);
+
+    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this));
+  }
+
+  _createClass(NavBar, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        { "class": "topnav" },
+        React.createElement(
+          "div",
+          { "class": "topnav-centered" },
+          React.createElement(
+            "h2",
+            null,
+            "Decode"
+          )
+        ),
+        React.createElement(
+          "div",
+          { "class": "topnav-left" },
+          React.createElement(
+            "h2",
+            null,
+            "Encode"
+          )
+        ),
+        React.createElement(
+          "div",
+          { "class": "topnav-right" },
+          React.createElement(
+            "h2",
+            null,
+            "How It Works"
+          )
+        )
+      );
+    }
+  }]);
+
+  return NavBar;
+}(React.Component);
+
+var MyComponent = function (_React$Component3) {
+  _inherits(MyComponent, _React$Component3);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -29,11 +105,9 @@ var MyComponent = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        React.createElement(
-          "h1",
-          null,
-          "My View 01"
-        )
+        React.createElement(Title, null),
+        React.createElement(NavBar, null),
+        React.createElement("hr", null)
       );
     }
   }]);
