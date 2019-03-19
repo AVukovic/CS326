@@ -1,12 +1,13 @@
 {
-  "name": "ch01",
+  "name": "package",
   "version": "1.0.0",
-  "description": "",
+  "description": "Rename the above with the name of your application.",
   "main": "index.js",
   "scripts": {
     "compile": "babel src --presets react,es2015 --out-dir static",
     "watch": "babel src --presets react,es2015 --out-dir static --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,13 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.9.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AVukovic/CS326.git"
+  }, 
+  "bugs": {
+    "url": "https://github.com/AVukovic/CS326/issues"
+  },
+  "homepage": "https://github.com/AVukovic/CS326#readme"
 }
