@@ -30,9 +30,9 @@ class Nav extends React.Component {
       <div style={{textAlign:'center'}}>
         <table style={{textAlign: 'center', width:'100%'}}>
           <tr>
-            <th style={{textAlign:'center'}}>Encode</th>
-            <th style={{textAlign:'right'}}>Decode</th>
-            <th style={{textAlign:'center'}}>How It Works</th>
+            <th style={{textAlign:'center'}}><a href="/view01.html">Encode</a></th>
+            <th style={{textAlign:'right'}}><a href="/view02.html">Decode</a></th>
+            <th style={{textAlign:'center'}}><a href="/view03.html">How It Works</a></th>
           </tr>
         </table>
       </div>
