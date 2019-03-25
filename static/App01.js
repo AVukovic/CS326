@@ -55,21 +55,33 @@ var Nav = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         'div',
-        { style: { textAlign: 'center', padding: '14px 16px' } },
+        { style: { textAlign: 'center' } },
         React.createElement(
-          'a',
-          { href: '#home' },
-          'Home'
+          'div',
+          { style: { align: 'left' } },
+          React.createElement(
+            'a',
+            { href: '#news' },
+            'Encode'
+          )
         ),
         React.createElement(
-          'a',
-          { href: '#news' },
-          'News'
+          'div',
+          { style: { align: 'center' } },
+          React.createElement(
+            'a',
+            { href: '#news' },
+            'Decode'
+          )
         ),
         React.createElement(
-          'a',
-          { href: '#contact' },
-          'Contact'
+          'div',
+          { style: { align: 'right' } },
+          React.createElement(
+            'a',
+            { href: '#news' },
+            'How It Works?'
+          )
         )
       );
     }
