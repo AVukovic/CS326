@@ -13,33 +13,27 @@ class Title extends React.Component {
 
   render() {
     return (
-      <div align ="center">
+      <div style={{ textAlign:'center'}}>
         <h1>Euler on Canvas</h1>
       </div>
     );
   }
 }
 
-class NavBar extends React.Component {
+class Nav extends React.Component {
   constructor() {
     super();
   }
 
   render() {
     return (
-      <div class="topnav">
-        <div class="topnav-centered">
-          <h2>Decode</h2>
-        </div>
-        <div class="topnav-left">
-          <h2>Encode</h2>
-        </div>
-        <div class="topnav-right">
-          <h2>How It Works</h2>
-        </div>
+      <div style={{ textAlign:'center', padding: '14px 16px'}}>
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
       </div>
     );
-  };
+  }
 }
 
 class MyComponent extends React.Component {
@@ -49,9 +43,9 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <div align="center">
+      <div style={{ textAlign:'center'}}>
         <Title />
-        <NavBar />
+        <Nav />
         <hr />
       </div>
     );

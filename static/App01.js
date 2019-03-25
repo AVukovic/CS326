@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -24,15 +24,15 @@ var Title = function (_React$Component) {
   }
 
   _createClass(Title, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
-        { align: "center" },
+        'div',
+        { style: { textAlign: 'center' } },
         React.createElement(
-          "h1",
+          'h1',
           null,
-          "Euler on Canvas"
+          'Euler on Canvas'
         )
       );
     }
@@ -41,53 +41,41 @@ var Title = function (_React$Component) {
   return Title;
 }(React.Component);
 
-var NavBar = function (_React$Component2) {
-  _inherits(NavBar, _React$Component2);
+var Nav = function (_React$Component2) {
+  _inherits(Nav, _React$Component2);
 
-  function NavBar() {
-    _classCallCheck(this, NavBar);
+  function Nav() {
+    _classCallCheck(this, Nav);
 
-    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this));
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this));
   }
 
-  _createClass(NavBar, [{
-    key: "render",
+  _createClass(Nav, [{
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
-        { "class": "topnav" },
+        'div',
+        { style: { textAlign: 'center', padding: '14px 16px' } },
         React.createElement(
-          "div",
-          { "class": "topnav-centered" },
-          React.createElement(
-            "h2",
-            null,
-            "Decode"
-          )
+          'a',
+          { href: '#home' },
+          'Home'
         ),
         React.createElement(
-          "div",
-          { "class": "topnav-left" },
-          React.createElement(
-            "h2",
-            null,
-            "Encode"
-          )
+          'a',
+          { href: '#news' },
+          'News'
         ),
         React.createElement(
-          "div",
-          { "class": "topnav-right" },
-          React.createElement(
-            "h2",
-            null,
-            "How It Works"
-          )
+          'a',
+          { href: '#contact' },
+          'Contact'
         )
       );
     }
   }]);
 
-  return NavBar;
+  return Nav;
 }(React.Component);
 
 var MyComponent = function (_React$Component3) {
@@ -100,14 +88,14 @@ var MyComponent = function (_React$Component3) {
   }
 
   _createClass(MyComponent, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
-        null,
+        'div',
+        { style: { textAlign: 'center' } },
         React.createElement(Title, null),
-        React.createElement(NavBar, null),
-        React.createElement("hr", null)
+        React.createElement(Nav, null),
+        React.createElement('hr', null)
       );
     }
   }]);
