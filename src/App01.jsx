@@ -28,9 +28,13 @@ class Nav extends React.Component {
   render() {
     return (
       <div style={{textAlign:'center'}}>
-        <div style={{align:'left'}}><a href="#news">Encode</a></div>
-        <div style={{align:'center'}}><a href="#news">Decode</a></div>
-        <div style={{align:'right'}}><a href="#news">How It Works?</a></div>
+        <table style={{textAlign: 'center', width:'100%'}}>
+          <tr>
+            <th style={{textAlign:'center'}}>Encode</th>
+            <th style={{textAlign:'right'}}>Decode</th>
+            <th style={{textAlign:'center'}}>How It Works</th>
+          </tr>
+        </table>
       </div>
     );
   }

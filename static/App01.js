@@ -57,30 +57,26 @@ var Nav = function (_React$Component2) {
         'div',
         { style: { textAlign: 'center' } },
         React.createElement(
-          'div',
-          { style: { align: 'left' } },
+          'table',
+          { style: { textAlign: 'center', width: '100%' } },
           React.createElement(
-            'a',
-            { href: '#news' },
-            'Encode'
-          )
-        ),
-        React.createElement(
-          'div',
-          { style: { align: 'center' } },
-          React.createElement(
-            'a',
-            { href: '#news' },
-            'Decode'
-          )
-        ),
-        React.createElement(
-          'div',
-          { style: { align: 'right' } },
-          React.createElement(
-            'a',
-            { href: '#news' },
-            'How It Works?'
+            'tr',
+            null,
+            React.createElement(
+              'th',
+              { style: { textAlign: 'center' } },
+              'Encode'
+            ),
+            React.createElement(
+              'th',
+              { style: { textAlign: 'right' } },
+              'Decode'
+            ),
+            React.createElement(
+              'th',
+              { style: { textAlign: 'center' } },
+              'How It Works'
+            )
           )
         )
       );
