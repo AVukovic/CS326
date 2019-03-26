@@ -30,15 +30,9 @@ class Nav extends React.Component {
       <div style={{textAlign:'center'}}>
         <table style={{textAlign: 'center', width:'100%'}}>
           <tr>
-<<<<<<< HEAD
-            <th style={{textAlign:'center'}}>Encode</th>
-            <th style={{textAlign:'right'}}>Decode</th>
-            <th style={{textAlign:'center'}}>How It Works</th>
-=======
             <th style={{textAlign:'center'}}><a href="/view01.html">Encode</a></th>
             <th style={{textAlign:'right'}}><a href="/view02.html">Decode</a></th>
             <th style={{textAlign:'center'}}><a href="/view03.html">How It Works</a></th>
->>>>>>> 575d88e37b751da8de0c663b702556b3adc609cb
           </tr>
         </table>
       </div>
@@ -46,18 +40,13 @@ class Nav extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 class Body extends React.Component {
-=======
-class MyComponent extends React.Component {
->>>>>>> 575d88e37b751da8de0c663b702556b3adc609cb
   constructor() {
     super();
   }
 
   render() {
     return (
-<<<<<<< HEAD
       <div>
         <div style={{width: '300px', height: '225px',
           align: 'center', position: 'fixed', top: '175px', left: '115px',
@@ -91,12 +80,6 @@ class MyComponent extends React.Component {
         <Title />
         <Nav />
         <Body />
-=======
-      <div style={{ textAlign:'center'}}>
-        <Title />
-        <Nav />
->>>>>>> 575d88e37b751da8de0c663b702556b3adc609cb
-        <hr />
       </div>
     );
   }
