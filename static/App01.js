@@ -65,17 +65,29 @@ var Nav = function (_React$Component2) {
             React.createElement(
               'th',
               { style: { textAlign: 'center' } },
-              'Encode'
+              React.createElement(
+                'a',
+                { href: '/view01.html' },
+                'Encode'
+              )
             ),
             React.createElement(
               'th',
               { style: { textAlign: 'right' } },
-              'Decode'
+              React.createElement(
+                'a',
+                { href: '/view02.html' },
+                'Decode'
+              )
             ),
             React.createElement(
               'th',
               { style: { textAlign: 'center' } },
-              'How It Works'
+              React.createElement(
+                'a',
+                { href: '/view03.html' },
+                'How It Works'
+              )
             )
           )
         )
