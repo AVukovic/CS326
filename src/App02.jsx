@@ -6,7 +6,41 @@ const state = [
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
-class MyComponent extends React.Component {
+class Title extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div style={{ textAlign:'center'}}>
+        <h1>Euler on Canvas</h1>
+      </div>
+    );
+  }
+}
+
+class Nav extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div style={{textAlign:'center'}}>
+        <table style={{textAlign: 'center', width:'100%'}}>
+          <tr>
+            <th style={{textAlign:'center'}}>Encode</th>
+            <th style={{textAlign:'right'}}>Decode</th>
+            <th style={{textAlign:'center'}}>How It Works</th>
+          </tr>
+        </table>
+      </div>
+    );
+  }
+}
+
+class Body extends React.Component {
   constructor() {
     super();
   }
@@ -14,7 +48,39 @@ class MyComponent extends React.Component {
   render() {
     return (
       <div>
-        <h1>My View 02</h1>
+        <div style={{width: '300px', height: '225px',
+          align: 'center', position: 'fixed', top: '175px', left: '115px',
+          border: '3px solid black', padding: '20px'}}>
+          <p style = {{textAlign:'center'}}>
+          Image to be decoded</p>
+        </div>
+        <div style={{textAlign:'left',	width: '300px', height: '50px',
+          align: 'center', position: 'fixed', top: '175px', left: '550px',
+          border: '3px solid black', fontsize: '16', padding: '20px'}}>
+          <p>Decoded text will appear here</p>
+        </div>
+
+        <div style={{width: '75px', height: '50px', position: 'fixed', top: '490px', 
+        left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px'}}>
+          <p style = {{textAlign:'center'}}> UPLOAD</p>
+        </div>
+      </div>
+    );
+  }
+}
+
+class MyComponent extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div style={{ textAlign:'center'}}>
+        <Title />
+        <Nav />
+        <Body />
+        <hr />
       </div>
     );
   }

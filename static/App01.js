@@ -86,8 +86,62 @@ var Nav = function (_React$Component2) {
   return Nav;
 }(React.Component);
 
-var MyComponent = function (_React$Component3) {
-  _inherits(MyComponent, _React$Component3);
+var Body = function (_React$Component3) {
+  _inherits(Body, _React$Component3);
+
+  function Body() {
+    _classCallCheck(this, Body);
+
+    return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
+  }
+
+  _createClass(Body, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(
+          'div',
+          { style: { textAlign: 'left', width: '300px', height: '50px',
+              align: 'center', position: 'fixed', top: '177px', left: '115px',
+              border: '3px solid black', fontsize: '16', padding: '20px' } },
+          React.createElement(
+            'p',
+            null,
+            'Enter text to be encoded'
+          )
+        ),
+        React.createElement(
+          'div',
+          { style: { width: '300px', height: '225px',
+              align: 'center', position: 'fixed', top: '177px', left: '550px',
+              border: '3px solid black', padding: '20px' } },
+          React.createElement(
+            'p',
+            { style: { textAlign: 'center' } },
+            'Image will be generated here'
+          )
+        ),
+        React.createElement(
+          'div',
+          { style: { width: '75px', height: '50px', position: 'fixed', top: '307px',
+              left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px' } },
+          React.createElement(
+            'p',
+            { style: { textAlign: 'center' } },
+            ' ENCODE'
+          )
+        )
+      );
+    }
+  }]);
+
+  return Body;
+}(React.Component);
+
+var MyComponent = function (_React$Component4) {
+  _inherits(MyComponent, _React$Component4);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -103,6 +157,7 @@ var MyComponent = function (_React$Component3) {
         { style: { textAlign: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
+        React.createElement(Body, null),
         React.createElement('hr', null)
       );
     }

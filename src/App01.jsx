@@ -40,6 +40,34 @@ class Nav extends React.Component {
   }
 }
 
+class Body extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div>
+        <div style={{textAlign:'left',	width: '300px', height: '50px',
+          align: 'center', position: 'fixed', top: '177px', left: '115px',
+          border: '3px solid black', fontsize: '16', padding: '20px'}}>
+          <p>Enter text to be encoded</p>
+        </div>
+        <div style={{width: '300px', height: '225px',
+          align: 'center', position: 'fixed', top: '177px', left: '550px',
+          border: '3px solid black', padding: '20px'}}>
+          <p style = {{textAlign:'center'}}>
+          Image will be generated here</p>
+        </div>
+        <div style={{width: '75px', height: '50px', position: 'fixed', top: '307px', 
+        left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px'}}>
+          <p style = {{textAlign:'center'}}> ENCODE</p>
+        </div>
+      </div>
+    );
+  }
+}
+
 class MyComponent extends React.Component {
   constructor() {
     super();
@@ -50,6 +78,7 @@ class MyComponent extends React.Component {
       <div style={{ textAlign:'center'}}>
         <Title />
         <Nav />
+        <Body />
         <hr />
       </div>
     );
