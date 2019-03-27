@@ -43,23 +43,29 @@ class Nav extends React.Component {
 class Body extends React.Component {
   constructor() {
     super();
+    this.state = {msg: 'Empty'}
+    this.clickButton = this.clickButton.bind(this)
+  }
+
+  clickButton(){
+    this.setState({msg: "Message would be recovered here"});
   }
 
   render() {
     return (
       <div>
-        <div style={{textAlign:'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
-          fontsize: '16', padding: '10px'}}>
-          <textarea rows="5" cols="25" placeholder="Message will be recovered here."></textarea>
-          </div>
-        <div style={{width: '300px', height: '225px', position: 'fixed',
-          align: 'center', top: '120px', left: '150px',
+        <div style={{textAlign: 'left',width: '300px', height: '225px', position: 'fixed',
+          align: 'left', top: '120px', left: '150px',
           border: '1px solid black', padding: '20px'}}>
           <p style = {{textAlign:'center'}}>
           Image will be uploaded here.</p>
         </div>
+        <div style={{textAlign:'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
+          fontsize: '16', padding: '10px'}}>
+          <textarea rows="5" cols="25" placeholder={this.state.msg}></textarea>
+          </div>
         <div style ={{align: 'center-left', position: 'fixed', top: '400px', left: '288px'}}>
-          <button onClick={null}>Decode</button>
+          <button onClick={() => {this.clickButton()}}>Decode</button>
         </div>
         </div>
     );
@@ -73,7 +79,7 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign:'center'}}>
+      <div style={{align:'center'}}>
         <Title />
         <Nav />
         <Body />

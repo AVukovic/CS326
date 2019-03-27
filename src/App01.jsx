@@ -1,8 +1,6 @@
 // This is a place holder for the initial application state.
 
 
-
-
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -43,6 +41,12 @@ class Nav extends React.Component {
 class Body extends React.Component {
   constructor(state) {
     super();
+    this.state = {msg: 'Empty'}
+    this.clickButton = this.clickButton.bind(this)
+  }
+
+  clickButton(){
+    this.setState({msg: "Image would be uploaded here"});
   }
 
   render() {
@@ -53,12 +57,12 @@ class Body extends React.Component {
           <textarea rows="5" cols="25" name = "InputMessage" placeholder="Enter Message To Be Encoded"></textarea>
           </div>
           <div style ={{align: 'center-left', position: 'fixed', top: '255px', left: '348px'}}>
-          <button onClick={null}>Encode</button>
+          <button onClick={() => {this.clickButton()}}>Encode</button>
         </div>
-        <div style={{width: '300px', height: '225px',
+        <div style={{width: '300px', height: '225px', textAlign: 'center',
           align: 'right', position: 'fixed', top: '140px', left: '700px',
           border: '1px solid black', padding: '20px'}}>
-          <p>Image would be uploaded here</p>
+          <p>{this.state.msg}</p>
         </div>
         </div>
     );
@@ -72,7 +76,7 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign:'center'}}>
+      <div style={{align:'center'}}>
         <Title />
         <Nav />
         <Body />

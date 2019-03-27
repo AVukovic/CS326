@@ -104,25 +104,30 @@ var Body = function (_React$Component3) {
   function Body() {
     _classCallCheck(this, Body);
 
-    return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
+    var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
+
+    _this3.state = { msg: 'Empty' };
+    _this3.clickButton = _this3.clickButton.bind(_this3);
+    return _this3;
   }
 
   _createClass(Body, [{
+    key: 'clickButton',
+    value: function clickButton() {
+      this.setState({ msg: "Message would be recovered here" });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
+
       return React.createElement(
         'div',
         null,
         React.createElement(
           'div',
-          { style: { textAlign: 'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
-              fontsize: '16', padding: '10px' } },
-          React.createElement('textarea', { rows: '5', cols: '25', placeholder: 'Message will be recovered here.' })
-        ),
-        React.createElement(
-          'div',
-          { style: { width: '300px', height: '225px', position: 'fixed',
-              align: 'center', top: '120px', left: '150px',
+          { style: { textAlign: 'left', width: '300px', height: '225px', position: 'fixed',
+              align: 'left', top: '120px', left: '150px',
               border: '1px solid black', padding: '20px' } },
           React.createElement(
             'p',
@@ -132,10 +137,18 @@ var Body = function (_React$Component3) {
         ),
         React.createElement(
           'div',
+          { style: { textAlign: 'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
+              fontsize: '16', padding: '10px' } },
+          React.createElement('textarea', { rows: '5', cols: '25', placeholder: this.state.msg })
+        ),
+        React.createElement(
+          'div',
           { style: { align: 'center-left', position: 'fixed', top: '400px', left: '288px' } },
           React.createElement(
             'button',
-            { onClick: null },
+            { onClick: function onClick() {
+                _this4.clickButton();
+              } },
             'Decode'
           )
         )
@@ -160,7 +173,7 @@ var MyComponent = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         'div',
-        { style: { textAlign: 'center' } },
+        { style: { align: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
         React.createElement(Body, null),
