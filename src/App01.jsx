@@ -1,7 +1,7 @@
 // This is a place holder for the initial application state.
-const state = [
 
-];
+
+
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
@@ -41,29 +41,26 @@ class Nav extends React.Component {
 }
 
 class Body extends React.Component {
-  constructor() {
+  constructor(state) {
     super();
   }
 
   render() {
     return (
       <div>
-        <div style={{textAlign:'left',	width: '300px', height: '50px',
-          align: 'center', position: 'fixed', top: '177px', left: '115px',
-          border: '3px solid black', fontsize: '16', padding: '20px'}}>
-          <p>Enter text to be encoded</p>
+        <div style={{textAlign:'left', align: 'left', position: 'fixed', top: '150px', left: '200px',
+          fontsize: '16', padding: '10px'}}>
+          <textarea rows="5" cols="25" name = "InputMessage" placeholder="Enter Message To Be Encoded"></textarea>
+          </div>
+          <div style ={{align: 'center-left', position: 'fixed', top: '255px', left: '348px'}}>
+          <button onClick={null}>Encode</button>
         </div>
         <div style={{width: '300px', height: '225px',
-          align: 'center', position: 'fixed', top: '177px', left: '550px',
-          border: '3px solid black', padding: '20px'}}>
-          <p style = {{textAlign:'center'}}>
-          Image will be generated here</p>
+          align: 'right', position: 'fixed', top: '140px', left: '700px',
+          border: '1px solid black', padding: '20px'}}>
+          <p>Image would be uploaded here</p>
         </div>
-        <div style={{width: '75px', height: '50px', position: 'fixed', top: '307px', 
-        left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px'}}>
-          <p style = {{textAlign:'center'}}> ENCODE</p>
         </div>
-      </div>
     );
   }
 }

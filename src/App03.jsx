@@ -48,19 +48,33 @@ class Body extends React.Component {
   render() {
     return (
       <div>
-        <div style={{width: '300px', height: '225px',
-          align: 'center', position: 'fixed', top: '175px', left: '115px',
+        <div style={{width: '200px', height: '200px',
+          align: 'center', position: 'fixed', top: '135px', left: '55px',
           border: '3px solid black', padding: '20px'}}>
           <p style = {{textAlign:'center'}}>Reference photo 1</p>
         </div>
 
-        <div style={{textAlign:'left', align: 'center', position: 'fixed', top: '150px', left: '500px',
+        <div style={{textAlign:'left', align: 'center', position: 'fixed', top: '130px', left: '350px',
           fontsize: '16', padding: '20px'}}>
-          <textarea rows="20" cols="50" placeholder="Put describtion here..."></textarea>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+          Vestibulum urna ante, elementum volutpat purus non, sodales lobortis eros.<br />
+          Aliquam id hendrerit urna, a luctus nulla. <br />
+          Duis non elit sed dolor auctor posuere a et felis. <br />
+          Donec convallis dui non auctor semper. <br />
+          Etiam dignissim lobortis felis. <br />
+          Mauris a ligula eget dui sagittis accumsan. <br />
+          Nulla facilisis risus mauris, hendrerit tempus sem viverra in. <br />
+          Sed augue quam, tristique sit amet volutpat non, porttitor et eros. <br />
+          Cras eleifend, purus aliquet tempus condimentum, <br />
+          ligula justo fringilla sapien, vel posuere ipsum turpis vitae mi. <br />
+          <br />
+          Sed turpis dui, faucibus et libero at, condimentum viverra ipsum. <br />
+          Sed et nibh ut lorem egestas eleifend. <br />
+          Vivamus convallis ipsum nec justo tempor rutrum.</p>
         </div>
 
-        <div style={{width: '300px', height: '225px',
-          align: 'center', position: 'fixed', top: '175px', left: '1000px',
+        <div style={{width: '200px', height: '200px',
+          align: 'center', position: 'fixed', top: '275px', left: '885px',
           border: '3px solid black', padding: '20px'}}>
           <p style = {{textAlign:'center'}}>Reference photo 2</p>
         </div>

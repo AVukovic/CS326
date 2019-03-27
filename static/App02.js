@@ -115,34 +115,28 @@ var Body = function (_React$Component3) {
         null,
         React.createElement(
           'div',
-          { style: { width: '300px', height: '225px',
-              align: 'center', position: 'fixed', top: '175px', left: '115px',
-              border: '3px solid black', padding: '20px' } },
+          { style: { textAlign: 'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
+              fontsize: '16', padding: '10px' } },
+          React.createElement('textarea', { rows: '5', cols: '25', placeholder: 'Message will be recovered here.' })
+        ),
+        React.createElement(
+          'div',
+          { style: { width: '300px', height: '225px', position: 'fixed',
+              align: 'center', top: '120px', left: '150px',
+              border: '1px solid black', padding: '20px' } },
           React.createElement(
             'p',
             { style: { textAlign: 'center' } },
-            'Image to be decoded'
+            'Image will be uploaded here.'
           )
         ),
         React.createElement(
           'div',
-          { style: { textAlign: 'left', width: '300px', height: '50px',
-              align: 'center', position: 'fixed', top: '175px', left: '550px',
-              border: '3px solid black', fontsize: '16', padding: '20px' } },
+          { style: { align: 'center-left', position: 'fixed', top: '400px', left: '288px' } },
           React.createElement(
-            'p',
-            null,
-            'Decoded text will appear here'
-          )
-        ),
-        React.createElement(
-          'div',
-          { style: { width: '75px', height: '50px', position: 'fixed', top: '490px',
-              left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px' } },
-          React.createElement(
-            'p',
-            { style: { textAlign: 'center' } },
-            ' UPLOAD'
+            'button',
+            { onClick: null },
+            'Decode'
           )
         )
       );
@@ -169,7 +163,8 @@ var MyComponent = function (_React$Component4) {
         { style: { textAlign: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
-        React.createElement(Body, null)
+        React.createElement(Body, null),
+        React.createElement('hr', null)
       );
     }
   }]);

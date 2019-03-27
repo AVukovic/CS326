@@ -48,23 +48,20 @@ class Body extends React.Component {
   render() {
     return (
       <div>
-        <div style={{width: '300px', height: '225px',
-          align: 'center', position: 'fixed', top: '175px', left: '115px',
-          border: '3px solid black', padding: '20px'}}>
+        <div style={{textAlign:'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
+          fontsize: '16', padding: '10px'}}>
+          <textarea rows="5" cols="25" placeholder="Message will be recovered here."></textarea>
+          </div>
+        <div style={{width: '300px', height: '225px', position: 'fixed',
+          align: 'center', top: '120px', left: '150px',
+          border: '1px solid black', padding: '20px'}}>
           <p style = {{textAlign:'center'}}>
-          Image to be decoded</p>
+          Image will be uploaded here.</p>
         </div>
-        <div style={{textAlign:'left',	width: '300px', height: '50px',
-          align: 'center', position: 'fixed', top: '175px', left: '550px',
-          border: '3px solid black', fontsize: '16', padding: '20px'}}>
-          <p>Decoded text will appear here</p>
+        <div style ={{align: 'center-left', position: 'fixed', top: '400px', left: '288px'}}>
+          <button onClick={null}>Decode</button>
         </div>
-
-        <div style={{width: '75px', height: '50px', position: 'fixed', top: '490px', 
-        left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px'}}>
-          <p style = {{textAlign:'center'}}> UPLOAD</p>
         </div>
-      </div>
     );
   }
 }
@@ -80,6 +77,7 @@ class MyComponent extends React.Component {
         <Title />
         <Nav />
         <Body />
+        <hr />
       </div>
     );
   }

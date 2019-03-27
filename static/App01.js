@@ -9,7 +9,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
-var state = [];
+
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
@@ -101,7 +101,7 @@ var Nav = function (_React$Component2) {
 var Body = function (_React$Component3) {
   _inherits(Body, _React$Component3);
 
-  function Body() {
+  function Body(state) {
     _classCallCheck(this, Body);
 
     return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
@@ -115,34 +115,28 @@ var Body = function (_React$Component3) {
         null,
         React.createElement(
           'div',
-          { style: { textAlign: 'left', width: '300px', height: '50px',
-              align: 'center', position: 'fixed', top: '177px', left: '115px',
-              border: '3px solid black', fontsize: '16', padding: '20px' } },
+          { style: { textAlign: 'left', align: 'left', position: 'fixed', top: '150px', left: '200px',
+              fontsize: '16', padding: '10px' } },
+          React.createElement('textarea', { rows: '5', cols: '25', name: 'InputMessage', placeholder: 'Enter Message To Be Encoded' })
+        ),
+        React.createElement(
+          'div',
+          { style: { align: 'center-left', position: 'fixed', top: '255px', left: '348px' } },
           React.createElement(
-            'p',
-            null,
-            'Enter text to be encoded'
+            'button',
+            { onClick: null },
+            'Encode'
           )
         ),
         React.createElement(
           'div',
           { style: { width: '300px', height: '225px',
-              align: 'center', position: 'fixed', top: '177px', left: '550px',
-              border: '3px solid black', padding: '20px' } },
+              align: 'right', position: 'fixed', top: '140px', left: '700px',
+              border: '1px solid black', padding: '20px' } },
           React.createElement(
             'p',
-            { style: { textAlign: 'center' } },
-            'Image will be generated here'
-          )
-        ),
-        React.createElement(
-          'div',
-          { style: { width: '75px', height: '50px', position: 'fixed', top: '307px',
-              left: '380px', border: '3px solid black', bottompadding: '20px', toppadding: '20px' } },
-          React.createElement(
-            'p',
-            { style: { textAlign: 'center' } },
-            ' ENCODE'
+            null,
+            'Image would be uploaded here'
           )
         )
       );
