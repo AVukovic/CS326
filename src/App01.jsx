@@ -1,6 +1,6 @@
 // This is a place holder for the initial application state.
 
-
+//import NavBar from './NavBar.jsx';
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -85,6 +85,7 @@ class MyComponent extends React.Component {
     );
   }
 }
+
 
 // This renders the JSX component inside the content node:
 ReactDOM.render(<MyComponent />, contentNode);
