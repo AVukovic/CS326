@@ -9,8 +9,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
-
-//import NavBar from './NavBar.jsx';
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -60,34 +58,30 @@ var Nav = function (_React$Component2) {
           'table',
           { style: { textAlign: 'center', width: '100%' } },
           React.createElement(
-            'tr',
-            null,
+            'th',
+            { style: { textAlign: 'center' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view01.html' },
-                'Encode'
-              )
-            ),
+              'a',
+              { href: '/view01.html' },
+              'Encode'
+            )
+          ),
+          React.createElement(
+            'th',
+            { style: { textAlign: 'right' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'right' } },
-              React.createElement(
-                'a',
-                { href: '/view02.html' },
-                'Decode'
-              )
-            ),
+              'a',
+              { href: '/view02.html' },
+              'Decode'
+            )
+          ),
+          React.createElement(
+            'th',
+            { style: { textAlign: 'center' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view03.html' },
-                'How It Works'
-              )
+              'a',
+              { href: '/view03.html' },
+              'How It Works'
             )
           )
         )
@@ -114,7 +108,7 @@ var Body = function (_React$Component3) {
   _createClass(Body, [{
     key: 'clickButton',
     value: function clickButton() {
-      this.setState({ msg: "Image would be uploaded here" });
+      this.setState({ msg: "Message would go here." });
     }
   }, {
     key: 'render',

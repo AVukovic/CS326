@@ -1,6 +1,4 @@
 // This is a place holder for the initial application state.
-
-//import NavBar from './NavBar.jsx';
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -27,11 +25,9 @@ class Nav extends React.Component {
     return (
       <div style={{textAlign:'center'}}>
         <table style={{textAlign: 'center', width:'100%'}}>
-          <tr>
             <th style={{textAlign:'center'}}><a href="/view01.html">Encode</a></th>
             <th style={{textAlign:'right'}}><a href="/view02.html">Decode</a></th>
             <th style={{textAlign:'center'}}><a href="/view03.html">How It Works</a></th>
-          </tr>
         </table>
       </div>
     );
@@ -46,7 +42,7 @@ class Body extends React.Component {
   }
 
   clickButton(){
-    this.setState({msg: "Image would be uploaded here"});
+    this.setState({msg: "Message would go here."});
   }
 
   render() {
