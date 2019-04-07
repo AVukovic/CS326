@@ -104,86 +104,66 @@ var Body = function (_React$Component3) {
     _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: '' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.caesar = _this3.caesar.bind(_this3);
-    _this3.update = _this3.update.bind(_this3);
-    _this3.reference = _this3.reference.bind(_this3);
-    var text = null;
+    _this3.onChange = _this3.onChange.bind(_this3);
     return _this3;
   }
 
   _createClass(Body, [{
     key: 'caesar',
     value: function caesar() {
+      //caesarian cypher implementation
       var offset = 1 + Math.random() * 24;
-      var msg = this.state.orgMsg;
-      var newmsg = "";
-      var letter = 0;
-      var min = 0;
-      var max = 0;
+      var msg = this.state.orgMsg,
+          newmsg = "";
+      var letter = 0,
+          min = 0,
+          max = 0;
       for (var i = 0; i < msg.length; i++) {
         var value = msg.charCodeAt(i);
         if (value == 32) {
-          //account for whitespace in messages
-          newsmsg.push(value);
-          continue;
-        } else if (value >= 90) {
-          //lowercase letters
-          min = 97;
-          max = 122;
-        } else if (value >= 65) {
-          //uppercase letters
-          min = 65;
-          max = 90;
-        }
+          newmsg.concat(value);continue;
+        } //account for whitespace in messages
+        else if (value >= 90) {
+            min = 97;max = 122;
+          } //lowercase letters
+          else if (value >= 65) {
+              min = 65;max = 90;
+            } //uppercase letters
         letter = min + (max - value + offset) % 25;
-        newmsg.concat(String.CharCodeFrom(letter));
+        newmsg.concat(String.fromCharCode(letter));
       }
       this.setState({ value: offset });
       this.setState({ codedMsg: newmsg });
     }
   }, {
+    key: 'onChange',
+    value: function onChange(event) {
+      this.setState({ orgMsg: event.target.value });
+    }
+  }, {
     key: 'clickButton',
-    value: function clickButton() {
-      this.caesar();
-    }
-  }, {
-    key: 'reference',
-    value: function reference(element) {
-      this.text = element;
-    }
-  }, {
-    key: 'update',
-    value: function update() {
-      if (this.text) this.setState({ orgMsg: this.text.value });
+    value: function clickButton(event) {
+      this.caesar();event.preventDefault();
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
-
       return React.createElement(
         'div',
         null,
         React.createElement(
           'div',
-          { style: { textAlign: 'left', align: 'left', position: 'fixed', top: '150px', left: '200px',
-              fontsize: '16', padding: '10px' } },
+          { style: { position: 'fixed', align: 'center', top: '150px', left: '150px' } },
           React.createElement(
-            'textarea',
-            { rows: '5', cols: '25', name: 'InputMessage',
-              placeholder: 'Enter Message To Be Encoded', value: this.state.orgMsg,
-              onChange: this.update(), ref: this.reference() },
-            ' '
-          )
-        ),
-        React.createElement(
-          'div',
-          { style: { align: 'center-left', position: 'fixed', top: '255px', left: '348px' } },
-          React.createElement(
-            'button',
-            { onClick: function onClick() {
-                _this4.clickButton();
-              } },
-            'Encode'
+            'form',
+            { onSubmit: this.clickButton },
+            React.createElement('textarea', { name: 'userMessage', rows: '5', cols: '20',
+              onChange: this.onChange, value: this.state.orgMsg }),
+            React.createElement(
+              'div',
+              { style: { position: 'fixed' } },
+              React.createElement('input', { type: 'submit', value: 'Encode' })
+            )
           )
         ),
         React.createElement(
@@ -194,7 +174,7 @@ var Body = function (_React$Component3) {
           React.createElement(
             'p',
             null,
-            this.state.orgMsg
+            this.state.codedMsg
           )
         )
       );
@@ -221,8 +201,8 @@ var MyComponent = function (_React$Component4) {
         { style: { align: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
-        React.createElement(Body, null),
-        React.createElement('hr', null)
+        React.createElement('hr', null),
+        React.createElement(Body, null)
       );
     }
   }]);

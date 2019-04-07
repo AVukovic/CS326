@@ -41,67 +41,42 @@ class Body extends React.Component {
     this.state = {orgMsg: 'Enter message here!', value: 0, codedMsg: ''};
     this.clickButton = this.clickButton.bind(this);
     this.caesar = this.caesar.bind(this);
-    this.update = this.update.bind(this);
-    this.reference = this.reference.bind(this);
-    let text = null;
+    this.onChange = this.onChange.bind(this);
   }
 
-  caesar(){
+  caesar(){ //caesarian cypher implementation
     let offset = 1 + (Math.random() * 24);
-    let msg = this.state.orgMsg;
-    let newmsg = "";
-    let letter = 0;
-    let min = 0; 
-    let max = 0;
+    let msg = this.state.orgMsg, newmsg = "";
+    let letter = 0, min = 0, max = 0;
     for (let i = 0; i < msg.length; i++){
       let value = msg.charCodeAt(i);
-      if (value == 32) { //account for whitespace in messages
-        newsmsg.push(value);
-        continue;
-      }
-      else if (value >= 90){ //lowercase letters
-        min = 97;
-        max = 122;
-      }
-      else if (value >= 65){ //uppercase letters
-        min = 65;
-        max = 90;
-      }
+      if (value == 32) { newmsg.concat(value); continue; }//account for whitespace in messages
+      else if (value >= 90){ min = 97; max = 122; }//lowercase letters
+      else if (value >= 65){ min = 65;  max = 90; }//uppercase letters
       letter = min + (((max - value) + offset) % 25);
-      newmsg.concat(String.CharCodeFrom(letter));
+      newmsg.concat(String.fromCharCode(letter));
     }
     this.setState({value: offset});
     this.setState({codedMsg: newmsg});
   }
+  onChange(event){this.setState({orgMsg: event.target.value}); }
 
-  clickButton(){
-    this.caesar();
-  }
-
-  reference(element){
-    this.text = element;
-  }
-
-  update(){
-    if (this.text) this.setState({orgMsg: this.text.value})
-  }
+  clickButton(event){ this.caesar(); event.preventDefault(); }
 
   render() {
     return (
       <div>
-        <div style={{textAlign:'left', align: 'left', position: 'fixed', top: '150px', left: '200px',
-          fontsize: '16', padding: '10px'}}>
-          <textarea rows="5" cols="25" name = "InputMessage" 
-                    placeholder="Enter Message To Be Encoded" value= {this.state.orgMsg}
-                    onChange = {this.update()} ref={this.reference()}> </textarea>
-          </div>
-          <div style ={{align: 'center-left', position: 'fixed', top: '255px', left: '348px'}}>
-          <button onClick={() => {this.clickButton()}}>Encode</button>
-        </div> 
+        <div style = {{position: 'fixed', align: 'center', top: '150px', left: '150px'}}>
+          <form onSubmit = {this.clickButton}>
+            <textarea name="userMessage" rows='5' cols='20' 
+            onChange={this.onChange} value={this.state.orgMsg}/>
+            <div style = {{position: 'fixed'}}><input type="submit" value="Encode" /></div>
+          </form>
+        </div>
         <div style={{width: '300px', height: '225px', textAlign: 'center',
           align: 'right', position: 'fixed', top: '140px', left: '700px',
           border: '1px solid black', padding: '20px'}}>
-          <p>{this.state.orgMsg}</p>
+          <p>{this.state.codedMsg}</p>
         </div>
         </div>
     );
@@ -118,8 +93,8 @@ class MyComponent extends React.Component {
       <div style={{align:'center'}}>
         <Title />
         <Nav />
-        <Body />
         <hr />
+        <Body />
       </div>
     );
   }
