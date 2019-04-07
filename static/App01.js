@@ -10,6 +10,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // This is a place holder for the initial application state.
 // This grabs the DOM element to be used to mount React components.
+//import NavTitle from './NavTitle';
 var contentNode = document.getElementById("contents");
 
 var Title = function (_React$Component) {
@@ -100,15 +101,59 @@ var Body = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { msg: 'Empty' };
+    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: '' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
+    _this3.caesar = _this3.caesar.bind(_this3);
+    _this3.update = _this3.update.bind(_this3);
+    _this3.reference = _this3.reference.bind(_this3);
+    var text = null;
     return _this3;
   }
 
   _createClass(Body, [{
+    key: 'caesar',
+    value: function caesar() {
+      var offset = 1 + Math.random() * 24;
+      var msg = this.state.orgMsg;
+      var newmsg = "";
+      var letter = 0;
+      var min = 0;
+      var max = 0;
+      for (var i = 0; i < msg.length; i++) {
+        var value = msg.charCodeAt(i);
+        if (value == 32) {
+          //account for whitespace in messages
+          newsmsg.push(value);
+          continue;
+        } else if (value >= 90) {
+          //lowercase letters
+          min = 97;
+          max = 122;
+        } else if (value >= 65) {
+          //uppercase letters
+          min = 65;
+          max = 90;
+        }
+        letter = min + (max - value + offset) % 25;
+        newmsg.concat(String.CharCodeFrom(letter));
+      }
+      this.setState({ value: offset });
+      this.setState({ codedMsg: newmsg });
+    }
+  }, {
     key: 'clickButton',
     value: function clickButton() {
-      this.setState({ msg: "Message would go here." });
+      this.caesar();
+    }
+  }, {
+    key: 'reference',
+    value: function reference(element) {
+      this.text = element;
+    }
+  }, {
+    key: 'update',
+    value: function update() {
+      if (this.text) this.setState({ orgMsg: this.text.value });
     }
   }, {
     key: 'render',
@@ -122,7 +167,13 @@ var Body = function (_React$Component3) {
           'div',
           { style: { textAlign: 'left', align: 'left', position: 'fixed', top: '150px', left: '200px',
               fontsize: '16', padding: '10px' } },
-          React.createElement('textarea', { rows: '5', cols: '25', name: 'InputMessage', placeholder: 'Enter Message To Be Encoded' })
+          React.createElement(
+            'textarea',
+            { rows: '5', cols: '25', name: 'InputMessage',
+              placeholder: 'Enter Message To Be Encoded', value: this.state.orgMsg,
+              onChange: this.update(), ref: this.reference() },
+            ' '
+          )
         ),
         React.createElement(
           'div',
@@ -143,7 +194,7 @@ var Body = function (_React$Component3) {
           React.createElement(
             'p',
             null,
-            this.state.msg
+            this.state.orgMsg
           )
         )
       );

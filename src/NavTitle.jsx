@@ -32,7 +32,7 @@ class Nav extends React.Component {
   }
 }
 
-export default class NavBar extends React.Component {
+export default class NavTitle extends React.Component {
     constructor() {
         super();
       }

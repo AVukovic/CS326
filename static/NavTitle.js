@@ -96,16 +96,16 @@ var Nav = function (_React$Component2) {
   return Nav;
 }(React.Component);
 
-var NavBar = function (_React$Component3) {
-  _inherits(NavBar, _React$Component3);
+var NavTitle = function (_React$Component3) {
+  _inherits(NavTitle, _React$Component3);
 
-  function NavBar() {
-    _classCallCheck(this, NavBar);
+  function NavTitle() {
+    _classCallCheck(this, NavTitle);
 
-    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this));
+    return _possibleConstructorReturn(this, (NavTitle.__proto__ || Object.getPrototypeOf(NavTitle)).call(this));
   }
 
-  _createClass(NavBar, [{
+  _createClass(NavTitle, [{
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -117,7 +117,7 @@ var NavBar = function (_React$Component3) {
     }
   }]);
 
-  return NavBar;
+  return NavTitle;
 }(React.Component);
 
-exports.default = NavBar;
+exports.default = NavTitle;
