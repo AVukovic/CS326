@@ -9,9 +9,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
-var state = [];
-
 // This grabs the DOM element to be used to mount React components.
+//import NavTitle from './NavTitle';
 var contentNode = document.getElementById("contents");
 
 var Title = function (_React$Component) {
@@ -60,34 +59,30 @@ var Nav = function (_React$Component2) {
           'table',
           { style: { textAlign: 'center', width: '100%' } },
           React.createElement(
-            'tr',
-            null,
+            'th',
+            { style: { textAlign: 'center' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view01.html' },
-                'Encode'
-              )
-            ),
+              'a',
+              { href: '/view01.html' },
+              'Encode'
+            )
+          ),
+          React.createElement(
+            'th',
+            { style: { textAlign: 'right' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'right' } },
-              React.createElement(
-                'a',
-                { href: '/view02.html' },
-                'Decode'
-              )
-            ),
+              'a',
+              { href: '/view02.html' },
+              'Decode'
+            )
+          ),
+          React.createElement(
+            'th',
+            { style: { textAlign: 'center' } },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view03.html' },
-                'How It Works'
-              )
+              'a',
+              { href: '/view03.html' },
+              'How It Works'
             )
           )
         )
@@ -101,55 +96,92 @@ var Nav = function (_React$Component2) {
 var Body = function (_React$Component3) {
   _inherits(Body, _React$Component3);
 
-  function Body() {
+  function Body(state) {
     _classCallCheck(this, Body);
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { msg: 'Empty' };
+    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
+    _this3.onChange = _this3.onChange.bind(_this3);
+    _this3.onOffsetChange = _this3.onOffsetChange.bind(_this3);
     return _this3;
   }
 
   _createClass(Body, [{
+    key: 'onChange',
+    value: function onChange(event) {
+      this.setState({ orgMsg: event.target.value });
+    }
+  }, {
+    key: 'onOffsetChange',
+    value: function onOffsetChange(event) {
+      this.setState({ value: parseInt(event.target.value) });
+    }
+  }, {
     key: 'clickButton',
-    value: function clickButton() {
-      this.setState({ msg: "Message would be recovered here" });
+    value: function clickButton(event) {
+      //caesarian decoding cypher
+      var offset = 26 - this.state.value;
+      var msg = this.state.orgMsg,
+          newmsg = "";
+      var letter = 0,
+          min = 0;
+      for (var i = 0; i < msg.length; i++) {
+        var value = msg.charCodeAt(i);
+        if (value == 32) {
+          newmsg += " ";continue;
+        } //account for whitespace in messages
+        else if (value >= 97) {
+            min = 97;
+          } //account for lowercase letters
+          else if (value >= 65) {
+              min = 65;
+            } //account for uppercase letters
+        letter = min + (value + offset - min) % 26;
+        newmsg += String.fromCharCode(letter);
+      }
+      this.setState({ codedMsg: newmsg });
+      event.preventDefault();
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
-
       return React.createElement(
         'div',
         null,
         React.createElement(
           'div',
-          { style: { textAlign: 'left', width: '300px', height: '225px', position: 'fixed',
-              align: 'left', top: '120px', left: '150px',
-              border: '1px solid black', padding: '20px' } },
+          { style: { position: 'fixed', align: 'center', top: '150px', left: '915px' } },
+          'Decoded Message:',
+          React.createElement('br', null),
           React.createElement(
             'p',
-            { style: { textAlign: 'center' } },
-            'Image will be uploaded here.'
+            null,
+            this.state.codedMsg
           )
         ),
         React.createElement(
           'div',
-          { style: { textAlign: 'left', align: 'right', position: 'fixed', top: '150px', left: '847px',
-              fontsize: '16', padding: '10px' } },
-          React.createElement('textarea', { rows: '5', cols: '25', placeholder: this.state.msg })
-        ),
-        React.createElement(
-          'div',
-          { style: { align: 'center-left', position: 'fixed', top: '400px', left: '288px' } },
+          { style: { width: '300px', height: '225px', textAlign: 'center',
+              align: 'right', position: 'fixed', top: '140px', left: '150px',
+              border: '1px solid black', padding: '20px' } },
           React.createElement(
-            'button',
-            { onClick: function onClick() {
-                _this4.clickButton();
-              } },
-            'Decode'
+            'form',
+            { onSubmit: this.clickButton },
+            'Enter Message:',
+            React.createElement('br', null),
+            React.createElement('textarea', { name: 'userMessage', rows: '5', cols: '20',
+              onChange: this.onChange, value: this.state.orgMsg }),
+            React.createElement('br', null),
+            React.createElement('br', null),
+            'Enter Offset:',
+            React.createElement('input', { type: 'text', value: this.state.value, onChange: this.onOffsetChange }),
+            React.createElement(
+              'div',
+              { style: { position: 'fixed' } },
+              React.createElement('input', { type: 'submit', value: 'Decode' })
+            )
           )
         )
       );
@@ -176,8 +208,8 @@ var MyComponent = function (_React$Component4) {
         { style: { align: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
-        React.createElement(Body, null),
-        React.createElement('hr', null)
+        React.createElement('hr', null),
+        React.createElement(Body, null)
       );
     }
   }]);

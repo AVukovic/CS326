@@ -101,7 +101,7 @@ var Body = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: '' };
+    _this3.state = { orgMsg: 'Enter message here!', value: null, codedMsg: '' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
     return _this3;
@@ -115,25 +115,24 @@ var Body = function (_React$Component3) {
   }, {
     key: 'clickButton',
     value: function clickButton(event) {
-      //caesarian cypher
+      //caesarian encoding cypher
       var offset = 1 + Math.random() * 24;
       var msg = this.state.orgMsg,
           newmsg = "";
       var letter = 0,
-          min = 0,
-          max = 0;
+          min = 0;
       for (var i = 0; i < msg.length; i++) {
         var value = msg.charCodeAt(i);
         if (value == 32) {
           newmsg += " ";continue;
         } //account for whitespace in messages
-        else if (value >= 90) {
-            min = 97;max = 122;
+        else if (value >= 97) {
+            min = 97;
           } //account for lowercase letters
           else if (value >= 65) {
-              min = 65;max = 90;
+              min = 65;
             } //account for uppercase letters
-        letter = min + (max - value + offset) % 25;
+        letter = min + (value + offset - min) % 26;
         newmsg += String.fromCharCode(letter);
       }
       this.setState({ value: parseInt(offset, 10) });
