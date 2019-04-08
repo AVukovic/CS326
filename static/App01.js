@@ -103,15 +103,19 @@ var Body = function (_React$Component3) {
 
     _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: '' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
-    _this3.caesar = _this3.caesar.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
     return _this3;
   }
 
   _createClass(Body, [{
-    key: 'caesar',
-    value: function caesar() {
-      //caesarian cypher implementation
+    key: 'onChange',
+    value: function onChange(event) {
+      this.setState({ orgMsg: event.target.value });
+    }
+  }, {
+    key: 'clickButton',
+    value: function clickButton(event) {
+      //caesarian cypher
       var offset = 1 + Math.random() * 24;
       var msg = this.state.orgMsg,
           newmsg = "";
@@ -121,29 +125,20 @@ var Body = function (_React$Component3) {
       for (var i = 0; i < msg.length; i++) {
         var value = msg.charCodeAt(i);
         if (value == 32) {
-          newmsg.concat(value);continue;
+          newmsg += " ";continue;
         } //account for whitespace in messages
         else if (value >= 90) {
             min = 97;max = 122;
-          } //lowercase letters
+          } //account for lowercase letters
           else if (value >= 65) {
               min = 65;max = 90;
-            } //uppercase letters
+            } //account for uppercase letters
         letter = min + (max - value + offset) % 25;
-        newmsg.concat(String.fromCharCode(letter));
+        newmsg += String.fromCharCode(letter);
       }
-      this.setState({ value: offset });
+      this.setState({ value: parseInt(offset, 10) });
       this.setState({ codedMsg: newmsg });
-    }
-  }, {
-    key: 'onChange',
-    value: function onChange(event) {
-      this.setState({ orgMsg: event.target.value });
-    }
-  }, {
-    key: 'clickButton',
-    value: function clickButton(event) {
-      this.caesar();event.preventDefault();
+      event.preventDefault();
     }
   }, {
     key: 'render',
@@ -174,7 +169,9 @@ var Body = function (_React$Component3) {
           React.createElement(
             'p',
             null,
-            this.state.codedMsg
+            this.state.codedMsg,
+            ' ',
+            this.state.value
           )
         )
       );
