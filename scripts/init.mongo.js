@@ -12,15 +12,15 @@ db.messages.remove({});
 // in-memory version of the `server.js` code.
 db.messages.insert([
   {
-    _id: 'Ij Cpc',
+    id: 'Ij Cpc',
     offset: 1
   }, 
   {
-    _id: 'Slccd lv Jrrg',
+    id: 'Slccd lv Jrrg',
     offset: 3
   },
   {     
-    _id: 'Jvtwyptpzlk',
+    id: 'Jvtwyptpzlk',
     offset: 7
   }
 ]);

@@ -7,10 +7,11 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 
-app.post('./App01', (request, response) => {
-    let msg = request.body;
-
-})
+app.post('/', (request, response) => { const orgMsg = request.body; response.json(msg); });
+app.get('/', (request, response) => {
+    const key = request.body;
+    response.json(db.collection.findOne({id: key.id}));
+});
 
 let db;
 MongoClient.connect('mongodb://localhost', { useNewUrlParser: true }).then(connection => {
