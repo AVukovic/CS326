@@ -10,14 +10,20 @@ db.messages.remove({});
 
 // Now, we insert some mock data that mirrors the data that we have in the
 // in-memory version of the `server.js` code.
-db.messages.insert([{
-    pair_of_encrMs_offset : "[Ij Cpc,1]"
-  }, {
-    pair_of_encrMs_offset : "[Slccd lv Jrrg,3]"
+db.messages.insert([
+  {
+    id: 'Ij Cpc',
+    offset: 1
+  }, 
+  {
+    id: 'Slccd lv Jrrg',
+    offset: 3
   },
   {     
-    pair_of_encrMs_offset : "[Jvtwyptpzlk,7]"
-  }]);
+    id: 'Jvtwyptpzlk',
+    offset: 7
+  }
+]);
 
 // Lastly, we create "indexes" to make searching faster. For this particular
 // application we know that searching on the status, owner, and created properties
