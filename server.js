@@ -7,10 +7,10 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 
-app.post('/', (request, response) => { const orgMsg = request.body; response.json(msg); });
+app.post('/', (request, response) => { const orgMsg = request.body; response.json(orgMsg); });
 app.get('/', (request, response) => {
     const key = request.body;
-    response.json(db.collection.findOne({id: key.id}));
+    response.json(db.collection.find({id: key.id}));
 });
 
 let db;
