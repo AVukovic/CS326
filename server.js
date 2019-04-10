@@ -7,10 +7,14 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 
-app.post('/', (request, response) => { const orgMsg = request.body; response.json(orgMsg); });
-app.get('/', (request, response) => {
-    const key = request.body;
-    response.json(db.collection.find({id: key.id}));
+app.post('/post', (request, response) => { const orgMsg = request.body; response.json(orgMsg); });
+app.get('/get', (req, res) => {
+  db.collection('EulerOnCanvas').find().toArray().then((val, err) => {
+    res.json({ val });
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: `Internal Server Error: ${error}` });
+  });
 });
 
 let db;
