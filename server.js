@@ -14,8 +14,8 @@ app.post('/post', (req, res) => {
     res.status(422).json({ message: `Invalid request: ${err}` });
     return;
   }
-  db.collection('issues').insertOne(newIssue).then(result =>
-    db.collection('issues').find({ _id: result._id }).limit(1).next()).then(newIssue => {
+  db.collection('messages').insert(entry).then(result =>
+    db.collection('messages').find({ id: result.id }).limit(1).next()).then(newIssue => {
       res.json(newIssue);}).catch(error => {
         console.log(error);
         res.status(500).json({ message: `Internal Server Error: ${error}` });

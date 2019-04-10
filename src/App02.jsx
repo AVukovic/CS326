@@ -63,6 +63,28 @@ class Body extends React.Component {
     event.preventDefault();
   }
 
+  loadData() {
+    fetch('/get').then(response => {
+      if (response.ok) {
+        response.json().then(data => {
+          console.log("Total count of records:", data._metadata.total_count);
+          data.records.forEach(issue => {
+            issue.created = new Date(issue.created);
+            if (issue.completionDate)
+              issue.completionDate = new Date(issue.completionDate);
+          });
+          this.setState({ issues: data.records });
+        });
+      } else {
+        response.json().then(error => {
+          alert("Failed to fetch issues:" + error.message)
+        });
+      }
+    }).catch(err => {
+      alert("Error in fetching data from server:", err);
+    });
+  }
+
   render() {
     return (
       <div>
