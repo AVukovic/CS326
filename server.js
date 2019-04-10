@@ -7,7 +7,20 @@ app.use(express.static('static'));
 app.use(bodyParser.json());
 
 
-app.post('/post', (request, response) => { const orgMsg = request.body; response.json(orgMsg); });
+app.post('/post', (req, res) => {
+  const entry = req.body;
+  const err = validateIssue(newIssue);
+  if (err) {
+    res.status(422).json({ message: `Invalid request: ${err}` });
+    return;
+  }
+  db.collection('issues').insertOne(newIssue).then(result =>
+    db.collection('issues').find({ _id: result._id }).limit(1).next()).then(newIssue => {
+      res.json(newIssue);}).catch(error => {
+        console.log(error);
+        res.status(500).json({ message: `Internal Server Error: ${error}` });
+  });
+});
 
 app.get('/get', (req, res) => {
   datab.collection('messages').find().toArray().then((val, err) => {

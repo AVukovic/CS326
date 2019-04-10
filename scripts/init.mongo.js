@@ -11,7 +11,7 @@ db.createCollection('messages');
 
 // Now, we insert some mock data that mirrors the data that we have in the
 // in-memory version of the `server.js` code.
-db.collection.insert([
+db.messages.insert([
   {
     _id: 'Ij Cpc',
     offset: 1
