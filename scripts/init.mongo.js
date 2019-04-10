@@ -2,7 +2,7 @@
 
 // Connect to the issuetracker database. Note, if the issuetracker database
 // does not exist, it will create it with this call.
-db = new Mongo().getDB('EulerOnCanvas');
+db = new Mongo().getDB('database');
 
 // Next, we remove everything inside it. This is helpful to ensure that the
 // database starts from a known state.
@@ -12,15 +12,15 @@ db.messages.remove({});
 // in-memory version of the `server.js` code.
 db.messages.insert([
   {
-    id: 'Ij Cpc',
+    _id: 'Ij Cpc',
     offset: 1
   }, 
   {
-    id: 'Slccd lv Jrrg',
+    _id: 'Slccd lv Jrrg',
     offset: 3
   },
   {     
-    id: 'Jvtwyptpzlk',
+    _id: 'Jvtwyptpzlk',
     offset: 7
   }
 ]);
