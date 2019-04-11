@@ -101,10 +101,10 @@ var Body = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
+    _this3.state = { orgMsg: 'Enter message here!', value: 1, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
-    _this3.onOffsetChange = _this3.onOffsetChange.bind(_this3);
+    //this.onOffsetChange = this.onOffsetChange.bind(this);
     return _this3;
   }
 
@@ -113,11 +113,8 @@ var Body = function (_React$Component3) {
     value: function onChange(event) {
       this.setState({ orgMsg: event.target.value });
     }
-  }, {
-    key: 'onOffsetChange',
-    value: function onOffsetChange(event) {
-      this.setState({ value: parseInt(event.target.value) });
-    }
+    //onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
+
   }, {
     key: 'clickButton',
     value: function clickButton(event) {
@@ -143,6 +140,31 @@ var Body = function (_React$Component3) {
       }
       this.setState({ codedMsg: newmsg });
       event.preventDefault();
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var _this4 = this;
+
+      //FIX THIS
+      fetch('/get').then(function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {
+            console.log("Total count of records:", data._metadata.total_count);
+            data.records.forEach(function (issue) {
+              issue.created = new Date(issue.created);
+              if (issue.completionDate) issue.completionDate = new Date(issue.completionDate);
+            });
+            _this4.setState({ issues: data.records });
+          });
+        } else {
+          response.json().then(function (error) {
+            alert("Failed to fetch issues:" + error.message);
+          });
+        }
+      }).catch(function (err) {
+        alert("Error in fetching data from server:", err);
+      });
     }
   }, {
     key: 'render',
@@ -175,8 +197,6 @@ var Body = function (_React$Component3) {
               onChange: this.onChange, value: this.state.orgMsg }),
             React.createElement('br', null),
             React.createElement('br', null),
-            'Enter Offset:',
-            React.createElement('input', { type: 'text', value: this.state.value, onChange: this.onOffsetChange }),
             React.createElement(
               'div',
               { style: { position: 'fixed' } },

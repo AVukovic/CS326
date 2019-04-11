@@ -38,16 +38,30 @@ class Nav extends React.Component {
 class Body extends React.Component {
   constructor(state) {
     super();
-    this.state = {orgMsg: 'Enter message here!', value: 0, codedMsg: ' '};
+    this.state = {orgMsg: 'Enter message here!', value: 1, codedMsg: ' '};
     this.clickButton = this.clickButton.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onOffsetChange = this.onOffsetChange.bind(this);
+    //this.onOffsetChange = this.onOffsetChange.bind(this);
   }
 
   onChange(event){this.setState({orgMsg: event.target.value}); }
-  onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
+  //onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
 
   clickButton(event){ //caesarian decoding cypher
+    fetch('/get').then(response => {
+      if (response.ok) {
+        response.json().then(data => {
+          let val = data.map(obj => {obj._id === this.state.orgMsg});
+          this.setState({ value: val.offset });
+        });
+      } else {
+        response.json().then(error => {
+          alert("Failed to fetch issues:" + error.message)
+        });
+      }
+    }).catch(err => {
+      alert("Error in fetching data from server:", err);
+    });
     let offset = 26 - this.state.value;
     let msg = this.state.orgMsg, newmsg = "";
     let letter = 0, min = 0;
@@ -61,28 +75,6 @@ class Body extends React.Component {
     }
     this.setState({codedMsg: newmsg});
     event.preventDefault();
-  }
-
-  loadData() {
-    fetch('/get').then(response => {
-      if (response.ok) {
-        response.json().then(data => {
-          console.log("Total count of records:", data._metadata.total_count);
-          data.records.forEach(issue => {
-            issue.created = new Date(issue.created);
-            if (issue.completionDate)
-              issue.completionDate = new Date(issue.completionDate);
-          });
-          this.setState({ issues: data.records });
-        });
-      } else {
-        response.json().then(error => {
-          alert("Failed to fetch issues:" + error.message)
-        });
-      }
-    }).catch(err => {
-      alert("Error in fetching data from server:", err);
-    });
   }
 
   render() {
@@ -103,8 +95,6 @@ class Body extends React.Component {
               onChange={this.onChange} value={this.state.orgMsg}/>
             <br/>
             <br/>
-            Enter Offset:
-            <input type="text" value={this.state.value} onChange={this.onOffsetChange}/>
             <div style = {{position: 'fixed'}}><input type="submit" value="Decode" /></div>
           </form>
         </div>

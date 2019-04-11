@@ -13,15 +13,15 @@ db.createCollection('messages');
 // in-memory version of the `server.js` code.
 db.messages.insert([
   {
-    id: 'Ij Cpc',
+    _id: 'Ij Cpc',
     offset: 1
   }, 
   {
-    id: 'Slccd lv Jrrg',
+    _id: 'Slccd lv Jrrg',
     offset: 3
   },
   {     
-    id: 'Jvtwyptpzlk',
+    _id: 'Jvtwyptpzlk',
     offset: 7
   }
 ]);

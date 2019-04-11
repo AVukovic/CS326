@@ -9,13 +9,12 @@ app.use(bodyParser.json());
 
 app.post('/post', (req, res) => {
   const entry = req.body;
-  const err = validateIssue(newIssue);
-  if (err) {
-    res.status(422).json({ message: `Invalid request: ${err}` });
-    return;
-  }
-  db.collection('messages').insert(entry).then(result =>
-    db.collection('messages').find({ id: result.id }).limit(1).next()).then(newIssue => {
+  //if (err) {
+  //  res.status(422).json({ message: `Invalid request: ${err}` });
+  //  return;
+  //}
+  datab.collection('messages').insert(entry).then(result =>
+    datab.collection('messages').find({ _id: result._id }).limit(1).next()).then(newIssue => {
       res.json(newIssue);}).catch(error => {
         console.log(error);
         res.status(500).json({ message: `Internal Server Error: ${error}` });
@@ -23,7 +22,7 @@ app.post('/post', (req, res) => {
 });
 
 app.get('/get', (req, res) => {
-  datab.collection('messages').find().toArray().then((val, err) => {
+  datab.collection('messages').find({ _id: req._id}).toArray().then((val, err) => {
     res.json({ entries: val });
   }).catch(error => {
     console.log(error);

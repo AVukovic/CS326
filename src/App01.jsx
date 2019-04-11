@@ -42,6 +42,7 @@ class Body extends React.Component {
     this.clickButton = this.clickButton.bind(this);
     this.onChange = this.onChange.bind(this);
   }
+
   onChange(event){this.setState({orgMsg: event.target.value}); }
 
   clickButton(event){ //caesarian encoding cypher
@@ -58,6 +59,11 @@ class Body extends React.Component {
     }
     this.setState({value: parseInt(offset,10)});
     this.setState({codedMsg: newmsg});
+    fetch('/post', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ _id: this.state.newMsg, offset: this.state.value})
+    });
     event.preventDefault();
   }
 
