@@ -135,8 +135,14 @@ var Body = function (_React$Component3) {
         letter = min + (value + offset - min) % 26;
         newmsg += String.fromCharCode(letter);
       }
-      this.setState({ value: parseInt(offset, 10) });
+      var val = parseInt(offset, 10);
+      this.setState({ value: val });
       this.setState({ codedMsg: newmsg });
+      fetch('/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id: newmsg, offset: val })
+      });
       event.preventDefault();
     }
   }, {

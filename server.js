@@ -13,20 +13,22 @@ app.post('/post', (req, res) => {
   //  res.status(422).json({ message: `Invalid request: ${err}` });
   //  return;
   //}
-  datab.collection('messages').insert(entry).then(result =>
-    datab.collection('messages').find({ _id: result._id }).limit(1).next()).then(newIssue => {
+  datab.collection('messages').insertOne(entry).then(result =>
+    datab.collection('messages').find({ _id: result._id}).limit(1).next()).then(newIssue => {
       res.json(newIssue);}).catch(error => {
         console.log(error);
         res.status(500).json({ message: `Internal Server Error: ${error}` });
   });
 });
 
-app.get('/get', (req, res) => {
-  datab.collection('messages').find({ _id: req._id}).toArray().then((val, err) => {
-    res.json({ entries: val });
-  }).catch(error => {
-    console.log(error);
-    res.status(500).json({ message: `Internal Server Error: ${error}` });
+app.get('/get/:msg', (req, res) => {
+  //console.log(req.params.msg);
+  datab.collection('messages').find({ _id: req.params.msg}).toArray().then((val, err) => {
+    //console.log(val[0]);
+    res.send(val[0])
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({ message: `Internal Server Error: ${err}` });
   });
 });
 

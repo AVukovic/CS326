@@ -57,12 +57,13 @@ class Body extends React.Component {
       letter = min + ((value + offset - min) % 26);
       newmsg += String.fromCharCode(letter);
     }
-    this.setState({value: parseInt(offset,10)});
+    let val = parseInt(offset,10);
+    this.setState({value: val});
     this.setState({codedMsg: newmsg});
     fetch('/post', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ _id: this.state.newMsg, offset: this.state.value})
+      body: JSON.stringify({ _id: newmsg, offset: val})
     });
     event.preventDefault();
   }

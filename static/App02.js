@@ -101,7 +101,7 @@ var Body = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { orgMsg: 'Enter message here!', value: 1, codedMsg: ' ' };
+    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
     //this.onOffsetChange = this.onOffsetChange.bind(this);
@@ -118,8 +118,23 @@ var Body = function (_React$Component3) {
   }, {
     key: 'clickButton',
     value: function clickButton(event) {
+      var _this4 = this;
+
       //caesarian decoding cypher
-      var offset = 26 - this.state.value;
+      fetch('/get/' + this.state.orgMsg).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {
+            _this4.setState({ value: data.offset });
+          });
+        } else {
+          response.json().then(function (error) {
+            alert("Failed to fetch issues:" + error.message);
+          });
+        }
+      }).catch(function (err) {
+        alert("Error in fetching data from server:", err);
+      });
+      var offset = 26 - this.state.offset;
       var msg = this.state.orgMsg,
           newmsg = "";
       var letter = 0,
@@ -138,33 +153,9 @@ var Body = function (_React$Component3) {
         letter = min + (value + offset - min) % 26;
         newmsg += String.fromCharCode(letter);
       }
+      alert(newmsg);
       this.setState({ codedMsg: newmsg });
       event.preventDefault();
-    }
-  }, {
-    key: 'loadData',
-    value: function loadData() {
-      var _this4 = this;
-
-      //FIX THIS
-      fetch('/get').then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            console.log("Total count of records:", data._metadata.total_count);
-            data.records.forEach(function (issue) {
-              issue.created = new Date(issue.created);
-              if (issue.completionDate) issue.completionDate = new Date(issue.completionDate);
-            });
-            _this4.setState({ issues: data.records });
-          });
-        } else {
-          response.json().then(function (error) {
-            alert("Failed to fetch issues:" + error.message);
-          });
-        }
-      }).catch(function (err) {
-        alert("Error in fetching data from server:", err);
-      });
     }
   }, {
     key: 'render',

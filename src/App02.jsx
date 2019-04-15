@@ -38,7 +38,7 @@ class Nav extends React.Component {
 class Body extends React.Component {
   constructor(state) {
     super();
-    this.state = {orgMsg: 'Enter message here!', value: 1, codedMsg: ' '};
+    this.state = {orgMsg: 'Enter message here!', value: 0, codedMsg: ' '};
     this.clickButton = this.clickButton.bind(this);
     this.onChange = this.onChange.bind(this);
     //this.onOffsetChange = this.onOffsetChange.bind(this);
@@ -48,11 +48,10 @@ class Body extends React.Component {
   //onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
 
   clickButton(event){ //caesarian decoding cypher
-    fetch('/get').then(response => {
+    fetch('/get/' + this.state.orgMsg).then(response => {
       if (response.ok) {
         response.json().then(data => {
-          let val = data.map(obj => {obj._id === this.state.orgMsg});
-          this.setState({ value: val.offset });
+          this.setState({ value: data.offset });
         });
       } else {
         response.json().then(error => {
@@ -62,7 +61,7 @@ class Body extends React.Component {
     }).catch(err => {
       alert("Error in fetching data from server:", err);
     });
-    let offset = 26 - this.state.value;
+    let offset = 26 - this.state.offset;
     let msg = this.state.orgMsg, newmsg = "";
     let letter = 0, min = 0;
     for (let i = 0; i < msg.length; i++){
@@ -73,6 +72,7 @@ class Body extends React.Component {
       letter = min + ((value + offset - min) % 26);
       newmsg += String.fromCharCode(letter);
     }
+    alert(newmsg)
     this.setState({codedMsg: newmsg});
     event.preventDefault();
   }
