@@ -104,7 +104,6 @@ var Body = function (_React$Component3) {
     _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
-    _this3.caesar = _this3.caesar.bind(_this3);
     //this.onOffsetChange = this.onOffsetChange.bind(this);
     return _this3;
   }
@@ -125,6 +124,26 @@ var Body = function (_React$Component3) {
         if (response.ok) {
           response.json().then(function (data) {
             _this4.setState({ value: data.offset });
+            var offset = 26 - _this4.state.value;
+            var msg = _this4.state.orgMsg,
+                newmsg = "";
+            var letter = 0,
+                min = 0;
+            for (var i = 0; i < msg.length; i++) {
+              var value = msg.charCodeAt(i);
+              if (value == 32) {
+                newmsg += " ";continue;
+              } //account for whitespace in messages
+              else if (value >= 97) {
+                  min = 97;
+                } //account for lowercase letters
+                else if (value >= 65) {
+                    min = 65;
+                  } //account for uppercase letters
+              letter = min + (value + offset - min) % 26;
+              newmsg += String.fromCharCode(letter);
+            }
+            _this4.setState({ codedMsg: newmsg });
           });
         } else {
           response.json().then(function (error) {
@@ -134,35 +153,6 @@ var Body = function (_React$Component3) {
       }).catch(function (err) {
         alert("Error in fetching data from server:", err);
       });
-      this.caesar();
-      event.preventDefault();
-    }
-  }, {
-    key: 'caesar',
-    value: function caesar() {
-      var offset = 26 - this.state.value;
-      alert(offset);
-      var msg = this.state.orgMsg,
-          newmsg = "";
-      alert(msg);
-      var letter = 0,
-          min = 0;
-      for (var i = 0; i < msg.length; i++) {
-        var value = msg.charCodeAt(i);
-        if (value == 32) {
-          newmsg += " ";continue;
-        } //account for whitespace in messages
-        else if (value >= 97) {
-            min = 97;
-          } //account for lowercase letters
-          else if (value >= 65) {
-              min = 65;
-            } //account for uppercase letters
-        //letter = min + ((value + offset - min) % 26);
-        newmsg += String.fromCharCode(min + (value + offset - min) % 26);
-        console.log(this.state.value);
-      }
-      this.setState({ codedMsg: newmsg });
       event.preventDefault();
     }
   }, {
