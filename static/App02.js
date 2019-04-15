@@ -104,6 +104,7 @@ var Body = function (_React$Component3) {
     _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
+    _this3.caesar = _this3.caesar.bind(_this3);
     //this.onOffsetChange = this.onOffsetChange.bind(this);
     return _this3;
   }
@@ -120,7 +121,6 @@ var Body = function (_React$Component3) {
     value: function clickButton(event) {
       var _this4 = this;
 
-      //caesarian decoding cypher
       fetch('/get/' + this.state.orgMsg).then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
@@ -134,9 +134,17 @@ var Body = function (_React$Component3) {
       }).catch(function (err) {
         alert("Error in fetching data from server:", err);
       });
-      var offset = 26 - this.state.offset;
+      this.caesar();
+      event.preventDefault();
+    }
+  }, {
+    key: 'caesar',
+    value: function caesar() {
+      var offset = 26 - this.state.value;
+      alert(offset);
       var msg = this.state.orgMsg,
           newmsg = "";
+      alert(msg);
       var letter = 0,
           min = 0;
       for (var i = 0; i < msg.length; i++) {
@@ -150,10 +158,10 @@ var Body = function (_React$Component3) {
           else if (value >= 65) {
               min = 65;
             } //account for uppercase letters
-        letter = min + (value + offset - min) % 26;
-        newmsg += String.fromCharCode(letter);
+        //letter = min + ((value + offset - min) % 26);
+        newmsg += String.fromCharCode(min + (value + offset - min) % 26);
+        console.log(this.state.value);
       }
-      alert(newmsg);
       this.setState({ codedMsg: newmsg });
       event.preventDefault();
     }

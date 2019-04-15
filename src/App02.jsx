@@ -41,17 +41,18 @@ class Body extends React.Component {
     this.state = {orgMsg: 'Enter message here!', value: 0, codedMsg: ' '};
     this.clickButton = this.clickButton.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.caesar = this.caesar.bind(this);
     //this.onOffsetChange = this.onOffsetChange.bind(this);
   }
 
   onChange(event){this.setState({orgMsg: event.target.value}); }
   //onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
 
-  clickButton(event){ //caesarian decoding cypher
+  clickButton(event){
     fetch('/get/' + this.state.orgMsg).then(response => {
       if (response.ok) {
         response.json().then(data => {
-          this.setState({ value: data.offset });
+          this.setState({value: data.offset});
         });
       } else {
         response.json().then(error => {
@@ -61,18 +62,25 @@ class Body extends React.Component {
     }).catch(err => {
       alert("Error in fetching data from server:", err);
     });
-    let offset = 26 - this.state.offset;
+    this.caesar();
+    event.preventDefault();
+  }
+
+  caesar(){
+    let offset = (26 - this.state.value);
+    alert(offset)
     let msg = this.state.orgMsg, newmsg = "";
+    alert(msg);
     let letter = 0, min = 0;
     for (let i = 0; i < msg.length; i++){
       let value = msg.charCodeAt(i);
       if (value == 32) { newmsg += " "; continue; }//account for whitespace in messages
       else if (value >= 97){ min = 97; }//account for lowercase letters
       else if (value >= 65){ min = 65; }//account for uppercase letters
-      letter = min + ((value + offset - min) % 26);
-      newmsg += String.fromCharCode(letter);
+      //letter = min + ((value + offset - min) % 26);
+      newmsg += String.fromCharCode((min + ((value + offset - min) % 26)));
+      console.log(this.state.value);
     }
-    alert(newmsg)
     this.setState({codedMsg: newmsg});
     event.preventDefault();
   }
