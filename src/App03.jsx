@@ -14,7 +14,7 @@ class Title extends React.Component {
   render() {
     return (
       <div style={{ textAlign:'center'}}>
-        <h1>Euler on Canvas</h1>
+        <h1 className="display-1"> Euler on Canvas</h1>
       </div>
     );
   }
@@ -28,14 +28,18 @@ class Nav extends React.Component {
   render() {
     return (
       <div style={{textAlign:'center'}}>
-        <table style={{textAlign: 'center', width:'100%'}}>
-          <tr>
-            <th style={{textAlign:'center'}}><a href="/view01.html">Encode</a></th>
-            <th style={{textAlign:'right'}}><a href="/view02.html">Decode</a></th>
-            <th style={{textAlign:'center'}}><a href="/view03.html">How It Works</a></th>
-          </tr>
-        </table>
-      </div>
+        <ul className="nav justify-content-center">
+          <li className="nav-item">
+            <a className="nav-link" href="/view01.html">Encode</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/view02.html">Decode</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link disabled" href="/view03.html">How it Works</a>
+          </li>
+      </ul>
+    </div>
     );
   }
 }

@@ -11,7 +11,7 @@ class Title extends React.Component {
   render() {
     return (
       <div style={{ textAlign:'center'}}>
-        <h1>Euler on Canvas</h1>
+        <h1 className="display-1"> Euler on Canvas</h1>
       </div>
     );
   }
@@ -25,12 +25,18 @@ class Nav extends React.Component {
   render() {
     return (
       <div style={{textAlign:'center'}}>
-        <table style={{textAlign: 'center', width:'100%'}}>
-            <th style={{textAlign:'center'}}><a href="/view01.html">Encode</a></th>
-            <th style={{textAlign:'right'}}><a href="/view02.html">Decode</a></th>
-            <th style={{textAlign:'center'}}><a href="/view03.html">How It Works</a></th>
-        </table>
-      </div>
+        <ul className="nav justify-content-center">
+          <li className="nav-item">
+            <a className="nav-link" href="/view01.html">Encode</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link disabled" href="/view02.html">Decode</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/view03.html">How it Works</a>
+          </li>
+      </ul>
+    </div>
     );
   }
 }
@@ -78,26 +84,34 @@ class Body extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style = {{position: 'fixed', align: 'center', top: '150px', left: '915px'}}>
-            Decoded Message:
-            <br/>
-            <p>{this.state.codedMsg}</p>
-        </div>
-          <div style={{width: '300px', height: '225px', textAlign: 'center',
-          align: 'right', position: 'fixed', top: '140px', left: '150px',
-          border: '1px solid black', padding: '20px'}}>
-          <form onSubmit = {this.clickButton}>
-            Enter Message:
-            <br/>
-            <textarea name="userMessage" rows='5' cols='20' 
-              onChange={this.onChange} value={this.state.orgMsg}/>
-            <br/>
-            <br/>
-            <div style = {{position: 'fixed'}}><input type="submit" value="Decode" /></div>
-          </form>
+    <form>
+      <div className="row">
+        <div className="col-2"></div><div className="col-2"></div>
+        <div className="form-group col-4 align-items-center" style={{ textAlign:'center' }}>
+            <textarea className="form-control" onChange={this.onChange} 
+                      placeholder={this.state.orgMsg} rows="3" style ={{ resize: 'none'}}></textarea>
         </div>
       </div>
+      <div className="row">
+      <div className="col-2"></div><div className="col-2"></div>
+        <div className="form-group col-4 align-items-center" style={{ textAlign:'center' }}>
+          <button type="button" className="btn btn-outline-secondary" onClick={this.clickButton}>Decode</button>
+        </div>
+      </div>
+      <div className="row">
+      <div className="col-2"></div><div className="col-2"></div>
+        <div className="col-4 align-items-center" style={{ textAlign:'center' }}>
+          <div class="card">
+            <div class="card-body">
+              <h6>Decoded Message:</h6>
+              <textarea className="border-0" rows='5' cols='20' 
+                onChange={this.onChange} value={this.state.codedMsg} 
+                style={{ resize: 'none', textAlign: 'center'}}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
     );
   }
 }

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -23,15 +23,15 @@ var Title = function (_React$Component) {
   }
 
   _createClass(Title, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { textAlign: 'center' } },
         React.createElement(
-          'h1',
-          null,
-          'Euler on Canvas'
+          "h1",
+          { className: "display-1" },
+          " Euler on Canvas"
         )
       );
     }
@@ -50,39 +50,39 @@ var Nav = function (_React$Component2) {
   }
 
   _createClass(Nav, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { textAlign: 'center' } },
         React.createElement(
-          'table',
-          { style: { textAlign: 'center', width: '100%' } },
+          "ul",
+          { className: "nav justify-content-center" },
           React.createElement(
-            'th',
-            { style: { textAlign: 'center' } },
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'a',
-              { href: '/view01.html' },
-              'Encode'
+              "a",
+              { className: "nav-link", href: "/view01.html" },
+              "Encode"
             )
           ),
           React.createElement(
-            'th',
-            { style: { textAlign: 'right' } },
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'a',
-              { href: '/view02.html' },
-              'Decode'
+              "a",
+              { className: "nav-link disabled", href: "/view02.html" },
+              "Decode"
             )
           ),
           React.createElement(
-            'th',
-            { style: { textAlign: 'center' } },
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'a',
-              { href: '/view03.html' },
-              'How It Works'
+              "a",
+              { className: "nav-link", href: "/view03.html" },
+              "How it Works"
             )
           )
         )
@@ -109,14 +109,14 @@ var Body = function (_React$Component3) {
   }
 
   _createClass(Body, [{
-    key: 'onChange',
+    key: "onChange",
     value: function onChange(event) {
       this.setState({ orgMsg: event.target.value });
     }
     //onOffsetChange(event){ this.setState({value: parseInt(event.target.value)}); }
 
   }, {
-    key: 'clickButton',
+    key: "clickButton",
     value: function clickButton(event) {
       var _this4 = this;
 
@@ -156,40 +156,61 @@ var Body = function (_React$Component3) {
       event.preventDefault();
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "form",
         null,
         React.createElement(
-          'div',
-          { style: { position: 'fixed', align: 'center', top: '150px', left: '915px' } },
-          'Decoded Message:',
-          React.createElement('br', null),
+          "div",
+          { className: "row" },
+          React.createElement("div", { className: "col-2" }),
+          React.createElement("div", { className: "col-2" }),
           React.createElement(
-            'p',
-            null,
-            this.state.codedMsg
+            "div",
+            { className: "form-group col-4 align-items-center", style: { textAlign: 'center' } },
+            React.createElement("textarea", { className: "form-control", onChange: this.onChange,
+              placeholder: this.state.orgMsg, rows: "3", style: { resize: 'none' } })
           )
         ),
         React.createElement(
-          'div',
-          { style: { width: '300px', height: '225px', textAlign: 'center',
-              align: 'right', position: 'fixed', top: '140px', left: '150px',
-              border: '1px solid black', padding: '20px' } },
+          "div",
+          { className: "row" },
+          React.createElement("div", { className: "col-2" }),
+          React.createElement("div", { className: "col-2" }),
           React.createElement(
-            'form',
-            { onSubmit: this.clickButton },
-            'Enter Message:',
-            React.createElement('br', null),
-            React.createElement('textarea', { name: 'userMessage', rows: '5', cols: '20',
-              onChange: this.onChange, value: this.state.orgMsg }),
-            React.createElement('br', null),
-            React.createElement('br', null),
+            "div",
+            { className: "form-group col-4 align-items-center", style: { textAlign: 'center' } },
             React.createElement(
-              'div',
-              { style: { position: 'fixed' } },
-              React.createElement('input', { type: 'submit', value: 'Decode' })
+              "button",
+              { type: "button", className: "btn btn-outline-secondary", onClick: this.clickButton },
+              "Decode"
+            )
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "row" },
+          React.createElement("div", { className: "col-2" }),
+          React.createElement("div", { className: "col-2" }),
+          React.createElement(
+            "div",
+            { className: "col-4 align-items-center", style: { textAlign: 'center' } },
+            React.createElement(
+              "div",
+              { "class": "card" },
+              React.createElement(
+                "div",
+                { "class": "card-body" },
+                React.createElement(
+                  "h6",
+                  null,
+                  "Decoded Message:"
+                ),
+                React.createElement("textarea", { className: "border-0", rows: "5", cols: "20",
+                  onChange: this.onChange, value: this.state.codedMsg,
+                  style: { resize: 'none', textAlign: 'center' } })
+              )
             )
           )
         )
@@ -210,14 +231,14 @@ var MyComponent = function (_React$Component4) {
   }
 
   _createClass(MyComponent, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { align: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
-        React.createElement('hr', null),
+        React.createElement("hr", null),
         React.createElement(Body, null)
       );
     }

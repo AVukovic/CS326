@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -24,15 +24,15 @@ var Title = function (_React$Component) {
   }
 
   _createClass(Title, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { textAlign: 'center' } },
         React.createElement(
-          'h1',
-          null,
-          'Euler on Canvas'
+          "h1",
+          { className: "display-1" },
+          " Euler on Canvas"
         )
       );
     }
@@ -51,43 +51,39 @@ var Nav = function (_React$Component2) {
   }
 
   _createClass(Nav, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { textAlign: 'center' } },
         React.createElement(
-          'table',
-          { style: { textAlign: 'center', width: '100%' } },
+          "ul",
+          { className: "nav justify-content-center" },
           React.createElement(
-            'tr',
-            null,
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view01.html' },
-                'Encode'
-              )
-            ),
+              "a",
+              { className: "nav-link", href: "/view01.html" },
+              "Encode"
+            )
+          ),
+          React.createElement(
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'th',
-              { style: { textAlign: 'right' } },
-              React.createElement(
-                'a',
-                { href: '/view02.html' },
-                'Decode'
-              )
-            ),
+              "a",
+              { className: "nav-link", href: "/view02.html" },
+              "Decode"
+            )
+          ),
+          React.createElement(
+            "li",
+            { className: "nav-item" },
             React.createElement(
-              'th',
-              { style: { textAlign: 'center' } },
-              React.createElement(
-                'a',
-                { href: '/view03.html' },
-                'How It Works'
-              )
+              "a",
+              { className: "nav-link disabled", href: "/view03.html" },
+              "How it Works"
             )
           )
         )
@@ -108,68 +104,68 @@ var Body = function (_React$Component3) {
   }
 
   _createClass(Body, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'div',
+          "div",
           { style: { width: '200px', height: '200px',
               align: 'center', position: 'fixed', top: '135px', left: '55px',
               border: '3px solid black', padding: '20px' } },
           React.createElement(
-            'p',
+            "p",
             { style: { textAlign: 'center' } },
-            'Reference photo 1'
+            "Reference photo 1"
           )
         ),
         React.createElement(
-          'div',
+          "div",
           { style: { textAlign: 'left', align: 'center', position: 'fixed', top: '130px', left: '350px',
               fontsize: '16', padding: '20px' } },
           React.createElement(
-            'p',
+            "p",
             null,
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            React.createElement('br', null),
-            'Vestibulum urna ante, elementum volutpat purus non, sodales lobortis eros.',
-            React.createElement('br', null),
-            'Aliquam id hendrerit urna, a luctus nulla. ',
-            React.createElement('br', null),
-            'Duis non elit sed dolor auctor posuere a et felis. ',
-            React.createElement('br', null),
-            'Donec convallis dui non auctor semper. ',
-            React.createElement('br', null),
-            'Etiam dignissim lobortis felis. ',
-            React.createElement('br', null),
-            'Mauris a ligula eget dui sagittis accumsan. ',
-            React.createElement('br', null),
-            'Nulla facilisis risus mauris, hendrerit tempus sem viverra in. ',
-            React.createElement('br', null),
-            'Sed augue quam, tristique sit amet volutpat non, porttitor et eros. ',
-            React.createElement('br', null),
-            'Cras eleifend, purus aliquet tempus condimentum, ',
-            React.createElement('br', null),
-            'ligula justo fringilla sapien, vel posuere ipsum turpis vitae mi. ',
-            React.createElement('br', null),
-            React.createElement('br', null),
-            'Sed turpis dui, faucibus et libero at, condimentum viverra ipsum. ',
-            React.createElement('br', null),
-            'Sed et nibh ut lorem egestas eleifend. ',
-            React.createElement('br', null),
-            'Vivamus convallis ipsum nec justo tempor rutrum.'
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            React.createElement("br", null),
+            "Vestibulum urna ante, elementum volutpat purus non, sodales lobortis eros.",
+            React.createElement("br", null),
+            "Aliquam id hendrerit urna, a luctus nulla. ",
+            React.createElement("br", null),
+            "Duis non elit sed dolor auctor posuere a et felis. ",
+            React.createElement("br", null),
+            "Donec convallis dui non auctor semper. ",
+            React.createElement("br", null),
+            "Etiam dignissim lobortis felis. ",
+            React.createElement("br", null),
+            "Mauris a ligula eget dui sagittis accumsan. ",
+            React.createElement("br", null),
+            "Nulla facilisis risus mauris, hendrerit tempus sem viverra in. ",
+            React.createElement("br", null),
+            "Sed augue quam, tristique sit amet volutpat non, porttitor et eros. ",
+            React.createElement("br", null),
+            "Cras eleifend, purus aliquet tempus condimentum, ",
+            React.createElement("br", null),
+            "ligula justo fringilla sapien, vel posuere ipsum turpis vitae mi. ",
+            React.createElement("br", null),
+            React.createElement("br", null),
+            "Sed turpis dui, faucibus et libero at, condimentum viverra ipsum. ",
+            React.createElement("br", null),
+            "Sed et nibh ut lorem egestas eleifend. ",
+            React.createElement("br", null),
+            "Vivamus convallis ipsum nec justo tempor rutrum."
           )
         ),
         React.createElement(
-          'div',
+          "div",
           { style: { width: '200px', height: '200px',
               align: 'center', position: 'fixed', top: '275px', left: '885px',
               border: '3px solid black', padding: '20px' } },
           React.createElement(
-            'p',
+            "p",
             { style: { textAlign: 'center' } },
-            'Reference photo 2'
+            "Reference photo 2"
           )
         )
       );
@@ -189,15 +185,15 @@ var MyComponent = function (_React$Component4) {
   }
 
   _createClass(MyComponent, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         { style: { textAlign: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
         React.createElement(Body, null),
-        React.createElement('hr', null)
+        React.createElement("hr", null)
       );
     }
   }]);
