@@ -8,9 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// This is a place holder for the initial application state.
-var state = [];
-
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -108,64 +105,106 @@ var Body = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "row" },
+        React.createElement("div", { className: "col-2" }),
+        React.createElement("div", { className: "col-2" }),
         React.createElement(
           "div",
-          { style: { width: '200px', height: '200px',
-              align: 'center', position: 'fixed', top: '135px', left: '55px',
-              border: '3px solid black', padding: '20px' } },
+          { className: "col-4 align-items-center", style: { textAlign: 'center' } },
           React.createElement(
             "p",
-            { style: { textAlign: 'center' } },
-            "Reference photo 1"
-          )
-        ),
-        React.createElement(
-          "div",
-          { style: { textAlign: 'left', align: 'center', position: 'fixed', top: '130px', left: '350px',
-              fontsize: '16', padding: '20px' } },
-          React.createElement(
-            "p",
-            null,
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            React.createElement("br", null),
-            "Vestibulum urna ante, elementum volutpat purus non, sodales lobortis eros.",
-            React.createElement("br", null),
-            "Aliquam id hendrerit urna, a luctus nulla. ",
-            React.createElement("br", null),
-            "Duis non elit sed dolor auctor posuere a et felis. ",
-            React.createElement("br", null),
-            "Donec convallis dui non auctor semper. ",
-            React.createElement("br", null),
-            "Etiam dignissim lobortis felis. ",
-            React.createElement("br", null),
-            "Mauris a ligula eget dui sagittis accumsan. ",
-            React.createElement("br", null),
-            "Nulla facilisis risus mauris, hendrerit tempus sem viverra in. ",
-            React.createElement("br", null),
-            "Sed augue quam, tristique sit amet volutpat non, porttitor et eros. ",
-            React.createElement("br", null),
-            "Cras eleifend, purus aliquet tempus condimentum, ",
-            React.createElement("br", null),
-            "ligula justo fringilla sapien, vel posuere ipsum turpis vitae mi. ",
+            { className: "text-justify" },
+            "Euler on Canvas is an app that allows you to encrpyt messages and decrpyt them at a later date. ",
             React.createElement("br", null),
             React.createElement("br", null),
-            "Sed turpis dui, faucibus et libero at, condimentum viverra ipsum. ",
+            "We achieve this through a classic method of encryption- the ",
+            React.createElement(
+              "b",
+              null,
+              "Caesarian Cypher"
+            ),
+            ". The Caesarian Cypher works by offsetting each letter in a given string of text by a number between ",
+            React.createElement(
+              "b",
+              null,
+              "1"
+            ),
+            " and ",
+            React.createElement(
+              "b",
+              null,
+              "25"
+            ),
+            ". For example, if our offset value is ",
+            React.createElement(
+              "b",
+              null,
+              "2"
+            ),
+            ", the message ",
+            React.createElement(
+              "b",
+              null,
+              "abc"
+            ),
+            " would become ",
+            React.createElement(
+              "b",
+              null,
+              "cde"
+            ),
+            ". If our offset was ",
+            React.createElement(
+              "b",
+              null,
+              "25"
+            ),
+            ", the message would become ",
+            React.createElement(
+              "b",
+              null,
+              "zab"
+            ),
+            ".",
             React.createElement("br", null),
-            "Sed et nibh ut lorem egestas eleifend. ",
             React.createElement("br", null),
-            "Vivamus convallis ipsum nec justo tempor rutrum."
-          )
-        ),
-        React.createElement(
-          "div",
-          { style: { width: '200px', height: '200px',
-              align: 'center', position: 'fixed', top: '275px', left: '885px',
-              border: '3px solid black', padding: '20px' } },
-          React.createElement(
-            "p",
-            { style: { textAlign: 'center' } },
-            "Reference photo 2"
+            "In order to decrypt messages, we use the coded messages and apply the inverse of the original cypher. The inverse is found by subtracting the offset from ",
+            React.createElement(
+              "b",
+              null,
+              "26"
+            ),
+            ". Harkening back to our original example, the inverted offset of ",
+            React.createElement(
+              "b",
+              null,
+              "2"
+            ),
+            " is now ",
+            React.createElement(
+              "b",
+              null,
+              "24"
+            ),
+            ". The string ",
+            React.createElement(
+              "b",
+              null,
+              "cde"
+            ),
+            " offset by ",
+            React.createElement(
+              "b",
+              null,
+              "24"
+            ),
+            " yields ",
+            React.createElement(
+              "b",
+              null,
+              "abc"
+            ),
+            ", our original message."
           )
         )
       );
@@ -192,8 +231,8 @@ var MyComponent = function (_React$Component4) {
         { style: { textAlign: 'center' } },
         React.createElement(Title, null),
         React.createElement(Nav, null),
-        React.createElement(Body, null),
-        React.createElement("hr", null)
+        React.createElement("hr", null),
+        React.createElement(Body, null)
       );
     }
   }]);

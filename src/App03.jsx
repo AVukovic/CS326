@@ -1,8 +1,3 @@
-// This is a place holder for the initial application state.
-const state = [
-
-];
-
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 
@@ -51,36 +46,12 @@ class Body extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style={{width: '200px', height: '200px',
-          align: 'center', position: 'fixed', top: '135px', left: '55px',
-          border: '3px solid black', padding: '20px'}}>
-          <p style = {{textAlign:'center'}}>Reference photo 1</p>
-        </div>
-
-        <div style={{textAlign:'left', align: 'center', position: 'fixed', top: '130px', left: '350px',
-          fontsize: '16', padding: '20px'}}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-          Vestibulum urna ante, elementum volutpat purus non, sodales lobortis eros.<br />
-          Aliquam id hendrerit urna, a luctus nulla. <br />
-          Duis non elit sed dolor auctor posuere a et felis. <br />
-          Donec convallis dui non auctor semper. <br />
-          Etiam dignissim lobortis felis. <br />
-          Mauris a ligula eget dui sagittis accumsan. <br />
-          Nulla facilisis risus mauris, hendrerit tempus sem viverra in. <br />
-          Sed augue quam, tristique sit amet volutpat non, porttitor et eros. <br />
-          Cras eleifend, purus aliquet tempus condimentum, <br />
-          ligula justo fringilla sapien, vel posuere ipsum turpis vitae mi. <br />
-          <br />
-          Sed turpis dui, faucibus et libero at, condimentum viverra ipsum. <br />
-          Sed et nibh ut lorem egestas eleifend. <br />
-          Vivamus convallis ipsum nec justo tempor rutrum.</p>
-        </div>
-
-        <div style={{width: '200px', height: '200px',
-          align: 'center', position: 'fixed', top: '275px', left: '885px',
-          border: '3px solid black', padding: '20px'}}>
-          <p style = {{textAlign:'center'}}>Reference photo 2</p>
+      <div className="row">
+        <div className="col-2"></div><div className="col-2"></div>
+        <div className="col-4 align-items-center" style={{ textAlign:'center' }}>
+          <p className="text-justify">Euler on Canvas is an app that allows you to encrpyt messages and decrpyt them at a later date. <br /><br /> 
+          We achieve this through a classic method of encryption- the <b>Caesarian Cypher</b>. The Caesarian Cypher works by offsetting each letter in a given string of text by a number between <b>1</b> and <b>25</b>. For example, if our offset value is <b>2</b>, the message <b>abc</b> would become <b>cde</b>. If our offset was <b>25</b>, the message would become <b>zab</b>.<br/><br />
+          In order to decrypt messages, we use the coded messages and apply the inverse of the original cypher. The inverse is found by subtracting the offset from <b>26</b>. Harkening back to our original example, the inverted offset of <b>2</b> is now <b>24</b>. The string <b>cde</b> offset by <b>24</b> yields <b>abc</b>, our original message.</p>
         </div>
       </div>
     );
@@ -97,8 +68,8 @@ class MyComponent extends React.Component {
       <div style={{ textAlign:'center'}}>
         <Title />
         <Nav />
-        <Body />
         <hr />
+        <Body />
       </div>
     );
   }
