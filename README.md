@@ -2,9 +2,10 @@
 
 # Team Members
 
-1. Tamas Palfi, tamaspalfi@umass.edu
-2. Alexander Vukovic, avukovic@umass.edu
-3. E. Malcolm Braverman, ebraverman@umass.edu
+1. Tamas Palfi
+2. Alexander Vukovic
+3. E. Malcolm Braverman
+4. Alexander Sun 
 
 # Application Initialization
 
