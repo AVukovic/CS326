@@ -54,7 +54,7 @@ var Nav = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { textAlign: 'center' } },
+        { style: { textAlign: 'center', background: 'linear-gradient(to right, #33ccff 0%, #FFA500 35%, #FFA500 65%, #33ccff 100%)' } },
         React.createElement(
           "ul",
           { className: "nav justify-content-center" },
@@ -101,7 +101,7 @@ var Body = function (_React$Component3) {
 
     var _this3 = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
-    _this3.state = { orgMsg: 'Enter message here!', value: 0, codedMsg: ' ' };
+    _this3.state = { orgMsg: 'Enter coded message here...', value: 0, codedMsg: ' ' };
     _this3.clickButton = _this3.clickButton.bind(_this3);
     _this3.onChange = _this3.onChange.bind(_this3);
     //this.onOffsetChange = this.onOffsetChange.bind(this);

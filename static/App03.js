@@ -52,7 +52,7 @@ var Nav = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { textAlign: 'center' } },
+        { style: { textAlign: 'center', background: 'linear-gradient(to right, #33ccff 0%, #FFA500 35%, #FFA500 65%, #33ccff 100%)' } },
         React.createElement(
           "ul",
           { className: "nav justify-content-center" },
@@ -114,7 +114,7 @@ var Body = function (_React$Component3) {
           React.createElement(
             "p",
             { className: "text-justify" },
-            "Euler on Canvas is an app that allows you to encrpyt messages and decrpyt them at a later date. ",
+            "Euler on Canvas is an app that allows you to encrypt messages and decrypt them at a later date. ",
             React.createElement("br", null),
             React.createElement("br", null),
             "We achieve this through a classic method of encryption- the ",

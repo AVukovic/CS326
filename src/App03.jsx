@@ -22,7 +22,7 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div style={{textAlign:'center'}}>
+      <div style={{textAlign:'center', background: 'linear-gradient(to right, #33ccff 0%, #FFA500 35%, #FFA500 65%, #33ccff 100%)'}}>
         <ul className="nav justify-content-center">
           <li className="nav-item">
             <a className="nav-link" href="/view01.html">Encode</a>
